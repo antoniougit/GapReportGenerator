@@ -28,7 +28,7 @@
                         name="selection"
                         value="email"
                         checked
-                        onclick="showHide()"
+                        onclick="handleClick(this); showHide()"
                     />
                     <label for="email">Email</label>
                     <input
@@ -36,7 +36,7 @@
                         id="sms"
                         name="selection"
                         value="sms"
-                        onclick="showHide()"
+                        onclick="handleClick(this); showHide()"
                     />
                     <label for="sms">SMS</label>
                 </div>
@@ -78,8 +78,13 @@
 
         <script>
             window.onload = function () {
+                const check = sessionStorage.getItem('check');
+                if (check === 'sms') {
+                    document.getElementById('sms').checked = true;
+                    showHide();
+                }
                 if (typeof window.FileReader !== 'function') {
-                    alert(`File API isn't supported on this browser yet.`);
+                    alert('File API not supported on this browser yet.');
                 }
             };
 
@@ -87,9 +92,13 @@
                 alert('Please select the correct file!');
             };
 
+            function handleClick(checkButton) {
+                const checkButtonId = checkButton.id;
+                sessionStorage.setItem('check', checkButtonId);
+            }
+
             function showHide() {
-                const selectEmail = document.getElementById('email'),
-                    selectSMS = document.getElementById('sms'),
+                const email = document.getElementById('email'),
                     sfmcDiv = document.getElementById('sfmcDiv'),
                     attentDiv = document.getElementById('attentDiv');
                 sfmcDiv.style.display = email.checked ? 'block' : 'none';
@@ -101,6 +110,8 @@
                 results = [];
 
             function readGAFile(file) {
+                fileData = {};
+                GAData = {};
                 results = [];
                 let conversions = 0,
                     revenue = 0;
@@ -134,11 +145,12 @@
                             fileData = xlRowObj;
                             GAData = Object.assign({}, fileData);
                         } else
-                            for (let j = 0; j < xlRowObj.length; j++) {
-                                if (xlRowObj[j]['Transactions'] > 0) {
-                                    fileData[j] = xlRowObj[j];
-                                    conversions += fileData[j]['Transactions'];
-                                    revenue += fileData[j]['Revenue'];
+                            for (const key in xlRowObj) {
+                                if (xlRowObj[key]['Transactions'] > 0) {
+                                    fileData[key] = xlRowObj[key];
+                                    conversions +=
+                                        fileData[key]['Transactions'];
+                                    revenue += fileData[key]['Revenue'];
                                 }
                                 GAData = {
                                     Conversions: conversions,
@@ -180,43 +192,100 @@
 
                         const sheet = workbook.Sheets[workbook.SheetNames[0]],
                             range = XLSX.utils.decode_range(sheet['!ref']);
-                        for (
-                            let rowNum = range.s.r;
-                            rowNum <= range.e.r;
-                            rowNum++
-                        ) {
-                            const secondCell =
-                                sheet[
-                                    XLSX.utils.encode_cell({ r: rowNum, c: 1 })
-                                ];
-                            if (
-                                secondCell &&
-                                secondCell.v === 'Email Content Name'
-                            ) {
-                                nameRow = rowNum;
-                            }
 
-                            for (let j = 0; j < dataLength; j++) {
+                        if (dataLength > 1) {
+                            for (
+                                let rowNum = range.s.r;
+                                rowNum <= range.e.r;
+                                rowNum++
+                            ) {
+                                const secondCell =
+                                    sheet[
+                                        XLSX.utils.encode_cell({
+                                            r: rowNum,
+                                            c: 1,
+                                        })
+                                    ];
                                 if (
                                     secondCell &&
-                                    secondCell.v === fileData[j]['Campaign']
+                                    secondCell.v === 'Email Content Name'
                                 ) {
-                                    campaignRow[j] = rowNum;
-                                    const xlRowObj =
-                                        XLSX.utils.sheet_to_row_object_array(
-                                            workbook.Sheets[
-                                                workbook.SheetNames[0]
-                                            ],
-                                            { range: nameRow }
-                                        );
-                                    fileData[j] =
-                                        xlRowObj[campaignRow[j] - nameRow - 1];
-                                    deliveries +=
-                                        fileData[j]['Email Deliveries'];
-                                    opens += fileData[j]['Email Unique Opens'];
-                                    clicks +=
-                                        fileData[j]['Email Unique Clicks'];
+                                    nameRow = rowNum;
+                                } else {
+                                    for (const key in fileData) {
+                                        if (
+                                            secondCell &&
+                                            secondCell.v ===
+                                                fileData[key]['Campaign']
+                                        ) {
+                                            campaignRow[key] = rowNum;
+                                            const xlRowObj =
+                                                XLSX.utils.sheet_to_row_object_array(
+                                                    workbook.Sheets[
+                                                        workbook.SheetNames[0]
+                                                    ],
+                                                    { range: nameRow }
+                                                );
+                                            fileData[key] =
+                                                xlRowObj[
+                                                    campaignRow[key] -
+                                                        nameRow -
+                                                        1
+                                                ];
+                                            deliveries +=
+                                                fileData[key][
+                                                    'Email Deliveries'
+                                                ];
+                                            opens +=
+                                                fileData[key][
+                                                    'Email Unique Opens'
+                                                ];
+                                            clicks +=
+                                                fileData[key][
+                                                    'Email Unique Clicks'
+                                                ];
+                                        }
+                                    }
                                 }
+                            }
+                        } else {
+                            for (
+                                let rowNum = range.s.r;
+                                rowNum <= range.e.r;
+                                rowNum++
+                            ) {
+                                const secondCell =
+                                    sheet[
+                                        XLSX.utils.encode_cell({
+                                            r: rowNum,
+                                            c: 1,
+                                        })
+                                    ];
+                                if (
+                                    secondCell &&
+                                    secondCell.v === 'Email Content Name'
+                                ) {
+                                    nameRow = rowNum;
+                                } else if (
+                                    secondCell &&
+                                    secondCell.v === fileData[0]['Campaign']
+                                ) {
+                                    campaignRow.push(rowNum);
+                                }
+                            }
+
+                            const xlRowObj =
+                                XLSX.utils.sheet_to_row_object_array(
+                                    workbook.Sheets[workbook.SheetNames[0]],
+                                    { range: nameRow }
+                                );
+
+                            for (let j = 0; j < campaignRow.length; j++) {
+                                fileData[j] =
+                                    xlRowObj[campaignRow[j] - nameRow - 1];
+                                deliveries += fileData[j]['Email Deliveries'];
+                                opens += fileData[j]['Email Unique Opens'];
+                                clicks += fileData[j]['Email Unique Clicks'];
                             }
                         }
 
@@ -277,7 +346,6 @@
                     ol.innerHTML = '';
                 }
                 let campaignRow = [];
-                const dataLength = Object.keys(fileData).length;
 
                 for (let i = 0; i < file.length; i++) {
                     const name = file[i].name,
@@ -301,35 +369,36 @@
                                     XLSX.utils.encode_cell({ r: rowNum, c: 1 })
                                 ];
 
-                            for (let j = 0; j < dataLength; j++) {
+                            for (const key in fileData) {
                                 if (
                                     secondCell &&
                                     secondCell.v
                                         .toLowerCase()
                                         .includes(
-                                            attentData[j][
+                                            attentData[key][
                                                 'Campaign'
                                             ].toLowerCase()
                                         )
                                 ) {
-                                    campaignRow[j] = rowNum;
+                                    campaignRow[key] = rowNum;
                                     const xlRowObj =
                                         XLSX.utils.sheet_to_row_object_array(
                                             workbook.Sheets[
                                                 workbook.SheetNames[0]
                                             ]
                                         );
-                                    fileData[j] = xlRowObj[campaignRow[j] - 1];
+                                    fileData[key] =
+                                        xlRowObj[campaignRow[key] - 1];
 
-                                    delete fileData[j]['Campaign Tags'];
+                                    delete fileData[key]['Campaign Tags'];
 
-                                    fileData[j]['Conversions'] =
-                                        GAData[j]['Transactions'];
-                                    fileData[j]['Revenue ($)'] =
-                                        GAData[j]['Revenue'];
+                                    fileData[key]['Conversions'] =
+                                        GAData[key]['Transactions'];
+                                    fileData[key]['Revenue ($)'] =
+                                        GAData[key]['Revenue'];
 
                                     const resultObj = Object.assign(
-                                        fileData[j]
+                                        fileData[key]
                                     );
                                     results.push(resultObj);
                                 }
@@ -396,6 +465,7 @@
                 link.setAttribute('href', data);
                 link.setAttribute('download', filename);
                 link.click();
+                location.reload();
             }
         </script>
     </body>
