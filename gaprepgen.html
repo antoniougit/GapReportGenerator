@@ -116,7 +116,7 @@
                     </span>
                 </div>
 
-                <!-- <div class="spec inputDiv">
+                <div class="spec inputDiv">
                     <input
                         class="inputText"
                         type="text"
@@ -270,7 +270,8 @@
                     <span class="focus-border">
                         <i></i>
                     </span>
-                </div> --->
+                </div>
+                -
             </div>
 
             <div class="fileDiv">
@@ -304,17 +305,6 @@
                 finalResults = [];
 
             const inputs = document.getElementsByClassName('inputText');
-            inputs[0].value =
-                'BR | 20230108 6AM FF Winter Sale - Up to 60% Off Sale + 30% SL LEV';
-            inputs[1].value =
-                'https://portal.persado.com/accounts/209/experiments/2595181';
-            inputs[2].value = '2765119 2765121 2765123';
-
-            inputs[3].value =
-                '20230109 6AM FF Winter Sale - Up to 60% Off Sale + 30% SL LEV';
-            inputs[4].value =
-                'https://portal.persado.com/accounts/209/experiments/2595189';
-            inputs[5].value = '2765107 2765109 2765111';
 
             const date = new Date();
             const currentDate = date.toLocaleString('default', {
@@ -324,42 +314,41 @@
             });
 
             function createReport(file) {
-                const inputObj = [];
+                for (let x = 0; x < file.length; x++) {
+                    const name = file[x].name,
+                        reader = new FileReader();
 
-                for (let z = 0; z < inputs.length / 3; z++) {
-                    inputObj.push({
-                        'Campaign Name': inputs[z * 3].value,
-                        'Portal Link': inputs[z * 3 + 1].value,
-                        'Geno Ids': inputs[z * 3 + 2].value
-                            .match(/(?:\d+\.)?\d+/g)
-                            .filter(Number),
-                    });
-                    const ctrl =
-                        inputObj[z]['Geno Ids'][
-                            inputObj[z]['Geno Ids'].length - 1
-                        ];
-                    inputObj[z]['Geno Ids'].splice(
-                        inputObj[z]['Geno Ids'].length - 1,
-                        1
-                    );
-                    inputObj[z]['Geno Ids'].unshift(ctrl);
+                    reader.onload = function (e) {
+                        const fileData = e.target.result,
+                            wb = XLSX.read(fileData, {
+                                type: 'binary',
+                            });
+                        const xlRowObj = XLSX.utils.sheet_to_row_object_array(
+                            wb.Sheets['Sheet1']
+                        );
 
-                    for (let x = 0; x < file.length; x++) {
-                        const name = file[x].name,
-                            reader = new FileReader();
+                        rawData = xlRowObj;
+                        const data = rawData;
 
-                        reader.onload = function (e) {
-                            const fileData = e.target.result,
-                                wb = XLSX.read(fileData, {
-                                    type: 'binary',
-                                });
-                            const xlRowObj =
-                                XLSX.utils.sheet_to_row_object_array(
-                                    wb.Sheets['Sheet1']
-                                );
+                        const inputObj = [];
 
-                            rawData = xlRowObj;
-                            const data = rawData;
+                        for (let z = 0; z < inputs.length / 3; z++) {
+                            inputObj.push({
+                                'Campaign Name': inputs[z * 3].value,
+                                'Portal Link': inputs[z * 3 + 1].value,
+                                'Geno Ids': inputs[z * 3 + 2].value
+                                    .match(/(?:\d+\.)?\d+/g)
+                                    .filter(Number),
+                            });
+                            const ctrl =
+                                inputObj[z]['Geno Ids'][
+                                    inputObj[z]['Geno Ids'].length - 1
+                                ];
+                            inputObj[z]['Geno Ids'].splice(
+                                inputObj[z]['Geno Ids'].length - 1,
+                                1
+                            );
+                            inputObj[z]['Geno Ids'].unshift(ctrl);
 
                             for (let y = 0; y < data.length; y++) {
                                 data[y]['Net Demand'] =
@@ -468,67 +457,65 @@
                                     'Geno ID': inputObj[z]['Geno Ids'][i],
                                 });
                             }
+                        }
 
-                            newResults = results.reduce((res, current) => {
-                                return res.concat(Array(3).fill(current));
-                            }, []);
+                        newResults = results.reduce((res, current) => {
+                            return res.concat(Array(3).fill(current));
+                        }, []);
 
-                            console.log(results, newResults);
-
-                            for (let i = 0; i < finalResults.length; i++) {
-                                finalResults[i]['Average Lift Opens'] =
-                                    (
-                                        ((newResults[i][1][1] +
-                                            newResults[i][2][1]) /
-                                            (newResults[i][1][0] +
-                                                newResults[i][2][0]) /
-                                            (newResults[i][0][1] /
-                                                newResults[i][0][0]) -
-                                            1) *
-                                        100
-                                    ).toFixed(2) + '%';
-                                finalResults[i]['Average Lift Clicks'] =
-                                    (
-                                        ((newResults[i][1][2] +
-                                            newResults[i][2][2]) /
-                                            (newResults[i][1][0] +
-                                                newResults[i][2][0]) /
-                                            (newResults[i][0][2] /
-                                                newResults[i][0][0]) -
-                                            1) *
-                                        100
-                                    ).toFixed(2) + '%';
-                                finalResults[i]['Average Lift Conversions'] =
-                                    (
-                                        ((newResults[i][1][3] +
-                                            newResults[i][2][3]) /
-                                            (newResults[i][1][0] +
-                                                newResults[i][2][0]) /
-                                            (newResults[i][0][3] /
-                                                newResults[i][0][0]) -
-                                            1) *
-                                        100
-                                    ).toFixed(2) + '%';
-                                finalResults[i]['Incremental Revenue'] =
-                                    '$' +
-                                    (
-                                        ((newResults[i][1][4] +
-                                            newResults[i][2][4]) /
-                                            (newResults[i][1][0] +
-                                                newResults[i][2][0]) -
-                                            newResults[i][0][4] /
-                                                newResults[i][0][0]) *
+                        for (let i = 0; i < finalResults.length; i++) {
+                            finalResults[i]['Average Lift Opens'] =
+                                (
+                                    ((newResults[i][1][1] +
+                                        newResults[i][2][1]) /
                                         (newResults[i][1][0] +
-                                            newResults[i][2][0])
-                                    ).toFixed(2);
-                            }
-                        };
+                                            newResults[i][2][0]) /
+                                        (newResults[i][0][1] /
+                                            newResults[i][0][0]) -
+                                        1) *
+                                    100
+                                ).toFixed(2) + '%';
+                            finalResults[i]['Average Lift Clicks'] =
+                                (
+                                    ((newResults[i][1][2] +
+                                        newResults[i][2][2]) /
+                                        (newResults[i][1][0] +
+                                            newResults[i][2][0]) /
+                                        (newResults[i][0][2] /
+                                            newResults[i][0][0]) -
+                                        1) *
+                                    100
+                                ).toFixed(2) + '%';
+                            finalResults[i]['Average Lift Conversions'] =
+                                (
+                                    ((newResults[i][1][3] +
+                                        newResults[i][2][3]) /
+                                        (newResults[i][1][0] +
+                                            newResults[i][2][0]) /
+                                        (newResults[i][0][3] /
+                                            newResults[i][0][0]) -
+                                        1) *
+                                    100
+                                ).toFixed(2) + '%';
+                            finalResults[i]['Incremental Revenue'] =
+                                '$' +
+                                (
+                                    ((newResults[i][1][4] +
+                                        newResults[i][2][4]) /
+                                        (newResults[i][1][0] +
+                                            newResults[i][2][0]) -
+                                        newResults[i][0][4] /
+                                            newResults[i][0][0]) *
+                                    (newResults[i][1][0] + newResults[i][2][0])
+                                ).toFixed(2);
+                        }
+                    };
+                    setTimeout(() => {
+                        downloadXL('test.xlsx');
+                    }, '1000');
 
-                        //   downloadXL('test.xlsx');
-                        reader.readAsBinaryString(file[x]);
-                    }
+                    reader.readAsBinaryString(file[x]);
                 }
-                //console.log(finalResults);
             }
 
             function downloadXL(fileName) {
@@ -546,51 +533,38 @@
                     { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } },
                     { s: { r: 13, c: 0 }, e: { r: 15, c: 0 } },
                     { s: { r: 16, c: 0 }, e: { r: 18, c: 0 } },
-                    { s: { r: 19, c: 0 }, e: { r: 21, c: 0 } },
-                    { s: { r: 22, c: 0 }, e: { r: 24, c: 0 } },
-                    { s: { r: 25, c: 0 }, e: { r: 27, c: 0 } },
                     { s: { r: 1, c: 9 }, e: { r: 3, c: 9 } },
                     { s: { r: 4, c: 9 }, e: { r: 6, c: 9 } },
                     { s: { r: 7, c: 9 }, e: { r: 9, c: 9 } },
                     { s: { r: 10, c: 9 }, e: { r: 12, c: 9 } },
                     { s: { r: 13, c: 9 }, e: { r: 15, c: 9 } },
                     { s: { r: 16, c: 9 }, e: { r: 18, c: 9 } },
-                    { s: { r: 19, c: 9 }, e: { r: 21, c: 9 } },
-                    { s: { r: 22, c: 9 }, e: { r: 24, c: 9 } },
-                    { s: { r: 25, c: 9 }, e: { r: 27, c: 9 } },
                     { s: { r: 1, c: 11 }, e: { r: 3, c: 11 } },
                     { s: { r: 4, c: 11 }, e: { r: 6, c: 11 } },
                     { s: { r: 7, c: 11 }, e: { r: 9, c: 11 } },
                     { s: { r: 10, c: 11 }, e: { r: 12, c: 11 } },
                     { s: { r: 13, c: 11 }, e: { r: 15, c: 11 } },
                     { s: { r: 16, c: 11 }, e: { r: 18, c: 11 } },
-                    { s: { r: 19, c: 11 }, e: { r: 21, c: 11 } },
-                    { s: { r: 22, c: 11 }, e: { r: 24, c: 11 } },
-                    { s: { r: 25, c: 11 }, e: { r: 27, c: 11 } },
                     { s: { r: 1, c: 13 }, e: { r: 3, c: 13 } },
                     { s: { r: 4, c: 13 }, e: { r: 6, c: 13 } },
                     { s: { r: 7, c: 13 }, e: { r: 9, c: 13 } },
                     { s: { r: 10, c: 13 }, e: { r: 12, c: 13 } },
                     { s: { r: 13, c: 13 }, e: { r: 15, c: 13 } },
                     { s: { r: 16, c: 13 }, e: { r: 18, c: 13 } },
-                    { s: { r: 19, c: 13 }, e: { r: 21, c: 13 } },
-                    { s: { r: 22, c: 13 }, e: { r: 24, c: 13 } },
-                    { s: { r: 25, c: 13 }, e: { r: 27, c: 13 } },
                     { s: { r: 1, c: 14 }, e: { r: 3, c: 14 } },
                     { s: { r: 4, c: 14 }, e: { r: 6, c: 14 } },
                     { s: { r: 7, c: 14 }, e: { r: 9, c: 14 } },
                     { s: { r: 10, c: 14 }, e: { r: 12, c: 14 } },
                     { s: { r: 13, c: 14 }, e: { r: 15, c: 14 } },
                     { s: { r: 16, c: 14 }, e: { r: 18, c: 14 } },
-                    { s: { r: 19, c: 14 }, e: { r: 21, c: 14 } },
-                    { s: { r: 22, c: 14 }, e: { r: 24, c: 14 } },
-                    { s: { r: 25, c: 14 }, e: { r: 27, c: 14 } },
                 ];
                 ws1['!merges'] = merge;
 
-                // ws1['A2'].l = {
-                //     Target: portalLink,
-                // };
+                for (let i = 1; i < inputs.length; i += 3) {
+                    ws1['A' + (i + 1)].l = {
+                        Target: inputs[i].value,
+                    };
+                }
 
                 XLSX.utils.sheet_add_aoa(
                     ws1,
