@@ -17,595 +17,318 @@
         />
         <!-- prettier-ignore -->
         <style>
-           h2{font-weight:700;font-size:35px;text-align:center;position:relative}h2 i{font-style:normal;background:#fff;position:relative;padding:10px}:focus{outline:0}input[type=text]{color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}:focus{outline:0}.spec{float:left;width:30%;margin:15px 10px;position:relative}[type=text]{color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}.inputText{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.inputText~.focus-border:after,.inputText~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.inputText~.focus-border:after{top:auto;bottom:0}.inputText~.focus-border i:after,.inputText~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.inputText~.focus-border i:after{left:auto;right:0}.inputText:focus~.focus-border:after,.inputText:focus~.focus-border:before{left:0;width:100%;transition:.4s}.inputText:focus~.focus-border i:after,.inputText:focus~.focus-border i:before{top:0;height:100%;transition:.6s}.inputText{border:1px solid #ccc;padding:7px 14px;transition:.4s;background:0 0}.inputText{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.inputText~.focus-border:after,.inputText~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.inputText~.focus-border:after{top:auto;bottom:0}.inputText~.focus-border i:after,.inputText~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.inputText~.focus-border i:after{left:auto;right:0}.inputText:focus~.focus-border:after,.inputText:focus~.focus-border:before{left:0;width:100%;transition:.4s}.inputText:focus~.focus-border i:after,.inputText:focus~.focus-border i:before{top:0;height:100%;transition:.6s}#file,#loader{position:absolute}#container,#file{width:100%;height:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#file{cursor:pointer}#clickCounter,#container,#loader,h1,h2{text-align:center}h2{font-size:20px}h3{font-weight:400;margin-bottom:20px}#loader{left:50%;top:50%;z-index:1;width:120px;height:120px;margin:-76px 0 0 -76px;border-radius:50%;border-top:16px solid #4285f4;border-right:16px solid #000d42;border-bottom:16px solid #fbbc05;border-left:16px solid #34a853;-webkit-animation:2s linear infinite spin;animation:2s linear infinite spin;display:none}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.animate-bottom{position:relative;-webkit-animation-name:animateBottom;-webkit-animation-duration:1s;animation-name:animateBottom;animation-duration:1s}@-webkit-keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}@keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}body{font-family:Verdana,sans-serif}p{margin:0;padding:0}#container{margin:0 auto}#campaignName,#portalLink{font-size:16px;width:400px;height:20px}.options{margin:0 20px}.report{font-weight:700;margin:.5em}#omniDiv,.final{margin-top:30px}#clickCounter{font-size:12px}.omni{position:relative;border:1px solid #000d42;border-radius:10px;display:inline-block;padding:30px 12px}.fileName{font-size:.85rem;color:#555}#file{top:0;left:0;opacity:0;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:0;text-indent:-100px}.omni>span{color:#ccc;font-size:14px;font-weight:400}:checked+label.radio{background:rgba(234,67,53,.3);border-radius:10px}#campaignName,#genoIds,#portalLink{padding:10px;margin:10px 0;border-radius:10px;text-align:center}#campaignName:focus,#genoIds,#portalLink{outline:0}#genoIds{font-size:16px}#container .specs{height:400px;width:90%;margin:0 auto}
+           h2{font-weight:700;font-size:35px;text-align:center;position:relative}h2 i{font-style:normal;background:#fff;position:relative;padding:10px}:focus{outline:0}input[type=text]{color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}:focus{outline:0}.spec{float:left;width:30%;margin:15px 10px;position:relative}[type=text]{color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}.inputText{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.inputText~.focus-border:after,.inputText~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.inputText~.focus-border:after{top:auto;bottom:0}.inputText~.focus-border i:after,.inputText~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.inputText~.focus-border i:after{left:auto;right:0}.inputText:focus~.focus-border:after,.inputText:focus~.focus-border:before{left:0;width:100%;transition:.4s}.inputText:focus~.focus-border i:after,.inputText:focus~.focus-border i:before{top:0;height:100%;transition:.6s}.inputText{border:1px solid #ccc;padding:7px 14px;transition:.4s;background:0 0}.inputText{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.inputText~.focus-border:after,.inputText~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.inputText~.focus-border:after{top:auto;bottom:0}.inputText~.focus-border i:after,.inputText~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.inputText~.focus-border i:after{left:auto;right:0}.inputText:focus~.focus-border:after,.inputText:focus~.focus-border:before{left:0;width:100%;transition:.4s}.inputText:focus~.focus-border i:after,.inputText:focus~.focus-border i:before{top:0;height:100%;transition:.6s}#file,#loader{position:absolute}#container,#file{width:100%;height:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#file{cursor:pointer}#clickCounter,#container,#loader,h1,h2{text-align:center}h2{font-size:20px}h3{font-weight:400;margin-bottom:20px}#loader{left:50%;top:50%;z-index:1;width:120px;height:120px;margin:-76px 0 0 -76px;border-radius:50%;border-top:16px solid #4285f4;border-right:16px solid #000d42;border-bottom:16px solid #fbbc05;border-left:16px solid #34a853;-webkit-animation:2s linear infinite spin;animation:2s linear infinite spin;display:none}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.animate-bottom{position:relative;-webkit-animation-name:animateBottom;-webkit-animation-duration:1s;animation-name:animateBottom;animation-duration:1s}@-webkit-keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}@keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}body{font-family:Verdana,sans-serif}p{margin:0;padding:0}#container{margin:0 auto}#campaignName,#portalLink{font-size:16px;width:400px;height:20px}.options{margin:0 20px}.report{font-weight:700;margin:.5em}#omniDiv,.final{margin-top:30px}#clickCounter{font-size:12px}.omni{position:relative;border:1px solid #000d42;border-radius:10px;display:inline-block;padding:45px 60px}.fileName{font-size:.85rem;color:#555}#file{top:0;left:0;opacity:0;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:0;text-indent:-100px}.omni>span{color:#ccc;font-size:14px;font-weight:400}:checked+label.radio{background:rgba(234,67,53,.3);border-radius:10px}#campaignName,#genoIds,#portalLink{padding:10px;margin:10px 0;border-radius:10px;text-align:center}#campaignName:focus,#genoIds,#portalLink{outline:0}#genoIds{font-size:16px}#container .specs{height:400px;width:90%;margin:0 auto}
         </style>
+
         <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.core.min.js"
-            integrity="sha512-UhlYw//T419BPq/emC5xSZzkjjreRfN3426517rfsg/XIEC02ggQBb680V0VvP+zaDZ78zqse3rqnnI5EJ6rxA=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
+            lang="javascript"
+            src="https://cdn.sheetjs.com/xlsx-0.19.2/package/dist/xlsx.mini.min.js"
         ></script>
     </head>
+    <!-- prettier-ignore -->
+    <body><h1>Gap Report Generator</h1> <h2> <span style="color: red">[</span>George Antoniou - EMEA SDE team<span style="color: red">]</span> </h2> <h3 id="clickCounter"> Final reports created: <span style="font-weight: bold"></span>! </h3> <div id="container" class="animate-bottom"> <div class="specs" style="display: block"> <div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName1" name="campaignName1" placeholder="Campaign Name #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink1" name="portalLink1" placeholder="Portal Link #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds1" name="genoIds1" placeholder="Geno IDs #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName2" name="campaignName2" placeholder="Campaign Name #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink2" name="portalLink2" placeholder="Portal Link #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds2" name="genoIds2" placeholder="Geno IDs #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName3" name="campaignName3" placeholder="Campaign Name #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink3" name="portalLink3" placeholder="Portal Link #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds3" name="genoIds3" placeholder="Geno IDs #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName4" name="campaignName4" placeholder="Campaign Name #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink4" name="portalLink4" placeholder="Portal Link #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds4" name="genoIds4" placeholder="Geno IDs #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName5" name="campaignName5" placeholder="Campaign Name #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink5" name="portalLink5" placeholder="Portal Link #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds5" name="genoIds5" placeholder="Geno IDs #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName6" name="campaignName6" placeholder="Campaign Name #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink6" name="portalLink6" placeholder="Portal Link #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds6" name="genoIds6" placeholder="Geno IDs #6"/> <span class="focus-border"> <i></i> </span> </div></div><div class="fileDiv"> <div id="omniDiv" style="display: block"> <label class="report omni" for="file" >Upload Omniture report<br/> <span>(click to browse or drag & drop file here)</span> <input name="file" id="file" class="file" type="file" accept=".xl*,.csv" onchange="createReport(this.files);"/> </label> </div><p class="fileName"></p></div></div></body>
+    <script>
+        function countClicks(endpoint) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(
+                'GET',
+                `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgen_test`
+            );
+            xhr.responseType = 'json';
+            if (endpoint === 'info') {
+                xhr.onload = function () {
+                    document.querySelector('#clickCounter > span').textContent =
+                        this.response.value;
+                };
+            }
+            xhr.send();
+        }
 
-    <body>
-        <div id="loader"></div>
-        <h1>Gap Report Generator</h1>
-        <h2>
-            <span style="color: red">[</span>George Antoniou - EMEA SDE
-            team<span style="color: red">]</span>
-        </h2>
-        <h3 id="clickCounter">
-            Final reports created:
-            <span style="font-weight: bold"></span>!
-        </h3>
-        <div id="container" class="animate-bottom">
-            <div class="specs" style="display: block">
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="campaignName1"
-                        name="campaignName1"
-                        placeholder="Campaign Name #1"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="portalLink1"
-                        name="portalLink1"
-                        placeholder="Portal Link #1"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="genoIds1"
-                        name="genoIds1"
-                        placeholder="Geno IDs #1"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
+        countClicks('info');
 
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="campaignName2"
-                        name="campaignName2"
-                        placeholder="Campaign Name #2"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
+        function addCommas(x) {
+            return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+        }
 
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="portalLink2"
-                        name="portalLink2"
-                        placeholder="Portal Link #2"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
+        const date = new Date();
+        const currentDate = date.toLocaleString('default', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+        });
 
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="genoIds2"
-                        name="genoIds2"
-                        placeholder="Geno IDs #2"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
+        let rawData = [];
+        const finalResults = [],
+            inputs = [];
 
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="campaignName3"
-                        name="campaignName3"
-                        placeholder="Campaign Name #3"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
+        function createReport(file) {
+            const allInputs = document.getElementsByClassName('inputText');
 
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="portalLink3"
-                        name="portalLink3"
-                        placeholder="Portal Link #3"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="genoIds3"
-                        name="genoIds3"
-                        placeholder="Geno IDs #3"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="campaignName4"
-                        name="campaignName4"
-                        placeholder="Campaign Name #4"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="portalLink4"
-                        name="portalLink4"
-                        placeholder="Portal Link #4"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="genoIds4"
-                        name="genoIds4"
-                        placeholder="Geno IDs #4"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="campaignName5"
-                        name="campaignName5"
-                        placeholder="Campaign Name #5"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="portalLink5"
-                        name="portalLink5"
-                        placeholder="Portal Link #5"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="genoIds5"
-                        name="genoIds5"
-                        placeholder="Geno IDs #5"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="campaignName6"
-                        name="campaignName6"
-                        placeholder="Campaign Name #6"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="portalLink6"
-                        name="portalLink6"
-                        placeholder="Portal Link #6"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-
-                <div class="spec inputDiv">
-                    <input
-                        class="inputText"
-                        type="text"
-                        id="genoIds6"
-                        name="genoIds6"
-                        placeholder="Geno IDs #6"
-                    />
-                    <span class="focus-border">
-                        <i></i>
-                    </span>
-                </div>
-                -
-            </div>
-
-            <div class="fileDiv">
-                <div id="omniDiv" style="display: block">
-                    <label class="report omni" for="file"
-                        >Upload Omniture report<br />
-                        <span>(click OR drag & drop here)</span>
-                        <input
-                            name="file"
-                            id="file"
-                            class="file"
-                            type="file"
-                            accept=".xl*,.csv"
-                            onchange="createReport(this.files);"
-                        />
-                    </label>
-                </div>
-                <p class="fileName"></p>
-            </div>
-        </div>
-
-        <script>
-            window.onload = function () {
-                countClicks('info');
-                if (typeof window.FileReader !== 'function') {
-                    alert(`File API isn't supported on this browser yet.`);
+            for (let i = 0; i < allInputs.length; i++) {
+                if (allInputs[i].value.trim().length) {
+                    inputs.push(allInputs[i].value);
                 }
-            };
-
-            function countClicks(endpoint) {
-                const xhr = new XMLHttpRequest();
-                xhr.open(
-                    'GET',
-                    `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgen_test`
-                );
-                xhr.responseType = 'json';
-                if (endpoint === 'info') {
-                    xhr.onload = function () {
-                        document.querySelector(
-                            '#clickCounter > span'
-                        ).textContent = this.response.value;
-                    };
-                }
-                xhr.send();
             }
 
-            let rawData = [],
-                results = [],
-                finalResults = [],
-                inputs = [];
+            if (inputs.length % 3 !== 0) {
+                alert('Please fill in the required data!');
+                return;
+            }
 
-            const date = new Date();
-            const currentDate = date.toLocaleString('default', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric',
-            });
+            for (let x = 0; x < file.length; x++) {
+                const name = file[x].name,
+                    reader = new FileReader();
 
-            function createReport(file) {
-                for (let x = 0; x < file.length; x++) {
-                    const name = file[x].name,
-                        reader = new FileReader();
+                reader.onload = function (e) {
+                    const fileData = e.target.result,
+                        wb = XLSX.read(fileData, {
+                            type: 'binary',
+                        });
+                    const xlRowObj = XLSX.utils.sheet_to_row_object_array(
+                        wb.Sheets['Sheet1']
+                    );
 
-                    reader.onload = function (e) {
-                        const fileData = e.target.result,
-                            wb = XLSX.read(fileData, {
-                                type: 'binary',
-                            });
-                        const xlRowObj = XLSX.utils.sheet_to_row_object_array(
-                            wb.Sheets['Sheet1']
+                    rawData = xlRowObj.map((a) => {
+                        return { ...a };
+                    });
+                    const data = rawData.map((a) => {
+                        return { ...a };
+                    });
+
+                    const results = [],
+                        inputObj = [];
+
+                    for (let z = 0; z < inputs.length / 3; z++) {
+                        inputObj.push({
+                            'Campaign Name': inputs[z * 3],
+                            'Portal Link': inputs[z * 3 + 1],
+                            'Geno Ids': inputs[z * 3 + 2]
+                                .match(/(?:\d+\.)?\d+/g)
+                                .filter(Number),
+                        });
+                        const ctrl =
+                            inputObj[z]['Geno Ids'][
+                                inputObj[z]['Geno Ids'].length - 1
+                            ];
+                        inputObj[z]['Geno Ids'].splice(
+                            inputObj[z]['Geno Ids'].length - 1,
+                            1
+                        );
+                        inputObj[z]['Geno Ids'].unshift(ctrl);
+
+                        for (let y = 0; y < data.length; y++) {
+                            data[y]['Net Demand'] =
+                                data[y]['Revenue (Gross Merchandise)'] -
+                                (data[y][
+                                    'Line + Brand Discount (e43) (event43)'
+                                ] +
+                                    data[y][
+                                        'Order Level Discount [non-PLCC] (e44) (event44)'
+                                    ] +
+                                    data[y]['PLCC Discount (e48) (event48)'] +
+                                    data[y][
+                                        'Pay with Points Discount (e329) (event329)'
+                                    ]);
+                        }
+
+                        results.push(
+                            Array.from(Array(3).fill(0), () =>
+                                new Array(5).fill(0)
+                            )
                         );
 
-                        rawData = xlRowObj;
-                        const data = rawData;
+                        const metrics = [
+                            'Delivered (event13)',
+                            'Opened (event14)',
+                            'Clicked (event15)',
+                            'Orders',
+                            'Net Demand',
+                        ];
 
-                        const allInputs =
-                            document.getElementsByClassName('inputText');
+                        const variants = ['C', 'T1', 'T2'];
 
-                        for (let i = 0; i < allInputs.length; i++) {
-                            if (allInputs[i].value.trim().length) {
-                                inputs.push(allInputs[i].value);
-                            }
-                        }
-                        const inputObj = [];
-
-                        for (let z = 0; z < inputs.length / 3; z++) {
-                            inputObj.push({
-                                'Campaign Name': inputs[z * 3],
-                                'Portal Link': inputs[z * 3 + 1],
-                                'Geno Ids': inputs[z * 3 + 2]
-                                    .match(/(?:\d+\.)?\d+/g)
-                                    .filter(Number),
-                            });
-                            const ctrl =
-                                inputObj[z]['Geno Ids'][
-                                    inputObj[z]['Geno Ids'].length - 1
-                                ];
-                            inputObj[z]['Geno Ids'].splice(
-                                inputObj[z]['Geno Ids'].length - 1,
-                                1
-                            );
-                            inputObj[z]['Geno Ids'].unshift(ctrl);
-
-                            for (let y = 0; y < data.length; y++) {
-                                data[y]['Net Demand'] =
-                                    data[y]['Revenue (Gross Merchandise)'] -
-                                    (data[y][
-                                        'Line + Brand Discount (e43) (event43)'
-                                    ] +
-                                        data[y][
-                                            'Order Level Discount [non-PLCC] (e44) (event44)'
-                                        ] +
-                                        data[y][
-                                            'PLCC Discount (e48) (event48)'
-                                        ] +
-                                        data[y][
-                                            'Pay with Points Discount (e329) (event329)'
-                                        ]);
-                            }
-
-                            results.push(
-                                Array.from(Array(3).fill(0), () =>
-                                    new Array(5).fill(0)
-                                )
-                            );
-
-                            const metrics = [
-                                'Delivered (event13)',
-                                'Opened (event14)',
-                                'Clicked (event15)',
-                                'Orders',
-                                'Net Demand',
-                            ];
-
-                            const variants = ['C', 'T1', 'T2'];
-
-                            for (let i = 0; i < variants.length; i++) {
-                                for (let j = 0; j < data.length; j++) {
-                                    for (let k = 0; k < metrics.length; k++) {
+                        for (let i = 0; i < variants.length; i++) {
+                            for (let j = 0; j < data.length; j++) {
+                                for (let k = 0; k < metrics.length; k++) {
+                                    if (
+                                        data[j][
+                                            'Email version (v11) (evar11)'
+                                        ].includes(inputObj[z]['Geno Ids'][i])
+                                    ) {
                                         if (
                                             data[j][
                                                 'Email version (v11) (evar11)'
-                                            ].includes(
-                                                inputObj[z]['Geno Ids'][i]
-                                            )
+                                            ].includes('PERSXC1X')
                                         ) {
-                                            if (
-                                                data[j][
-                                                    'Email version (v11) (evar11)'
-                                                ].includes('PERSXC1X')
-                                            ) {
-                                                results[z][i][k] +=
-                                                    data[j][metrics[k]];
-                                            } else if (
-                                                data[j][
-                                                    'Email version (v11) (evar11)'
-                                                ].includes('PERSXT1X')
-                                            ) {
-                                                results[z][i][k] +=
-                                                    data[j][metrics[k]];
-                                            } else if (
-                                                data[j][
-                                                    'Email version (v11) (evar11)'
-                                                ].includes('PERSXT2X')
-                                            ) {
-                                                results[z][i][k] +=
-                                                    data[j][metrics[k]];
-                                            }
+                                            results[z][i][k] +=
+                                                data[j][metrics[k]];
+                                        } else if (
+                                            data[j][
+                                                'Email version (v11) (evar11)'
+                                            ].includes('PERSXT1X')
+                                        ) {
+                                            results[z][i][k] +=
+                                                data[j][metrics[k]];
+                                        } else if (
+                                            data[j][
+                                                'Email version (v11) (evar11)'
+                                            ].includes('PERSXT2X')
+                                        ) {
+                                            results[z][i][k] +=
+                                                data[j][metrics[k]];
                                         }
-                                        results[z][i][k] = parseFloat(
-                                            results[z][i][k].toFixed(2)
-                                        );
                                     }
+                                    results[z][i][k] = parseFloat(
+                                        results[z][i][k].toFixed(2)
+                                    );
                                 }
-
-                                finalResults.push({
-                                    'Experiment Name & Link':
-                                        inputObj[z]['Campaign Name'],
-                                    Variant: variants[i],
-                                    Delivered: results[z][i][0],
-                                    Opened: results[z][i][1],
-                                    Clicked: results[z][i][2],
-                                    Orders: results[z][i][3],
-                                    'Net Demand': results[z][i][4],
-                                    '': '',
-                                    'Open Rate':
-                                        (
-                                            (results[z][i][1] /
-                                                results[z][i][0]) *
-                                            100
-                                        ).toFixed(2) + '%',
-                                    'Average Lift Opens': 0,
-                                    'Click Rate':
-                                        (
-                                            (results[z][i][2] /
-                                                results[z][i][0]) *
-                                            100
-                                        ).toFixed(2) + '%',
-                                    'Average Lift Clicks': 0,
-                                    'Conversion Rate':
-                                        (
-                                            (results[z][i][3] /
-                                                results[z][i][0]) *
-                                            100
-                                        ).toFixed(2) + '%',
-                                    'Average Lift Conversions': 0,
-                                    'Incremental Revenue': 0,
-                                    'Geno ID': inputObj[z]['Geno Ids'][i],
-                                });
                             }
+
+                            finalResults.push({
+                                'Experiment Name & Link':
+                                    inputObj[z]['Campaign Name'],
+                                Variant: variants[i],
+                                Delivered: results[z][i][0],
+                                Opened: results[z][i][1],
+                                Clicked: results[z][i][2],
+                                Orders: results[z][i][3],
+                                'Net Demand': results[z][i][4],
+                                '': '',
+                                'Open Rate':
+                                    (
+                                        (results[z][i][1] / results[z][i][0]) *
+                                        100
+                                    ).toFixed(2) + '%',
+                                'Average Lift Opens': 0,
+                                'Click Rate':
+                                    (
+                                        (results[z][i][2] / results[z][i][0]) *
+                                        100
+                                    ).toFixed(2) + '%',
+                                'Average Lift Clicks': 0,
+                                'Conversion Rate':
+                                    (
+                                        (results[z][i][3] / results[z][i][0]) *
+                                        100
+                                    ).toFixed(2) + '%',
+                                'Average Lift Conversions': 0,
+                                'Incremental Revenue': 0,
+                                'Geno ID': inputObj[z]['Geno Ids'][i],
+                            });
                         }
-
-                        newResults = results.reduce((res, current) => {
-                            return res.concat(Array(3).fill(current));
-                        }, []);
-
-                        for (let i = 0; i < finalResults.length; i++) {
-                            finalResults[i]['Average Lift Opens'] =
-                                (
-                                    ((newResults[i][1][1] +
-                                        newResults[i][2][1]) /
-                                        (newResults[i][1][0] +
-                                            newResults[i][2][0]) /
-                                        (newResults[i][0][1] /
-                                            newResults[i][0][0]) -
-                                        1) *
-                                    100
-                                ).toFixed(2) + '%';
-                            finalResults[i]['Average Lift Clicks'] =
-                                (
-                                    ((newResults[i][1][2] +
-                                        newResults[i][2][2]) /
-                                        (newResults[i][1][0] +
-                                            newResults[i][2][0]) /
-                                        (newResults[i][0][2] /
-                                            newResults[i][0][0]) -
-                                        1) *
-                                    100
-                                ).toFixed(2) + '%';
-                            finalResults[i]['Average Lift Conversions'] =
-                                (
-                                    ((newResults[i][1][3] +
-                                        newResults[i][2][3]) /
-                                        (newResults[i][1][0] +
-                                            newResults[i][2][0]) /
-                                        (newResults[i][0][3] /
-                                            newResults[i][0][0]) -
-                                        1) *
-                                    100
-                                ).toFixed(2) + '%';
-                            finalResults[i]['Incremental Revenue'] =
-                                '$' +
-                                (
-                                    ((newResults[i][1][4] +
-                                        newResults[i][2][4]) /
-                                        (newResults[i][1][0] +
-                                            newResults[i][2][0]) -
-                                        newResults[i][0][4] /
-                                            newResults[i][0][0]) *
-                                    (newResults[i][1][0] + newResults[i][2][0])
-                                ).toFixed(2);
-                        }
-                    };
-                    setTimeout(() => {
-                        downloadXL();
-                    }, '1000');
-
-                    reader.readAsBinaryString(file[x]);
-                }
-            }
-
-            function downloadXL(fileName) {
-                fileName = fileName || 'GapFinalReport.xlsx';
-                const ws2 = XLSX.utils.json_to_sheet(rawData),
-                    ws1 = XLSX.utils.json_to_sheet(finalResults),
-                    wb = XLSX.utils.book_new();
-
-                XLSX.utils.book_append_sheet(wb, ws1, 'Results');
-                XLSX.utils.book_append_sheet(wb, ws2, 'Raw Data');
-                const merge = [
-                    { s: { r: 1, c: 0 }, e: { r: 3, c: 0 } },
-                    { s: { r: 4, c: 0 }, e: { r: 6, c: 0 } },
-                    { s: { r: 7, c: 0 }, e: { r: 9, c: 0 } },
-                    { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } },
-                    { s: { r: 13, c: 0 }, e: { r: 15, c: 0 } },
-                    { s: { r: 16, c: 0 }, e: { r: 18, c: 0 } },
-                    { s: { r: 1, c: 9 }, e: { r: 3, c: 9 } },
-                    { s: { r: 4, c: 9 }, e: { r: 6, c: 9 } },
-                    { s: { r: 7, c: 9 }, e: { r: 9, c: 9 } },
-                    { s: { r: 10, c: 9 }, e: { r: 12, c: 9 } },
-                    { s: { r: 13, c: 9 }, e: { r: 15, c: 9 } },
-                    { s: { r: 16, c: 9 }, e: { r: 18, c: 9 } },
-                    { s: { r: 1, c: 11 }, e: { r: 3, c: 11 } },
-                    { s: { r: 4, c: 11 }, e: { r: 6, c: 11 } },
-                    { s: { r: 7, c: 11 }, e: { r: 9, c: 11 } },
-                    { s: { r: 10, c: 11 }, e: { r: 12, c: 11 } },
-                    { s: { r: 13, c: 11 }, e: { r: 15, c: 11 } },
-                    { s: { r: 16, c: 11 }, e: { r: 18, c: 11 } },
-                    { s: { r: 1, c: 13 }, e: { r: 3, c: 13 } },
-                    { s: { r: 4, c: 13 }, e: { r: 6, c: 13 } },
-                    { s: { r: 7, c: 13 }, e: { r: 9, c: 13 } },
-                    { s: { r: 10, c: 13 }, e: { r: 12, c: 13 } },
-                    { s: { r: 13, c: 13 }, e: { r: 15, c: 13 } },
-                    { s: { r: 16, c: 13 }, e: { r: 18, c: 13 } },
-                    { s: { r: 1, c: 14 }, e: { r: 3, c: 14 } },
-                    { s: { r: 4, c: 14 }, e: { r: 6, c: 14 } },
-                    { s: { r: 7, c: 14 }, e: { r: 9, c: 14 } },
-                    { s: { r: 10, c: 14 }, e: { r: 12, c: 14 } },
-                    { s: { r: 13, c: 14 }, e: { r: 15, c: 14 } },
-                    { s: { r: 16, c: 14 }, e: { r: 18, c: 14 } },
-                ];
-                ws1['!merges'] = merge;
-
-                for (let i = 1; i < inputs.length; i += 3) {
-                    ws1['A' + (i + 1)].l = {
-                        Target: inputs[i],
-                    };
-                }
-
-                XLSX.utils.sheet_add_aoa(
-                    ws1,
-                    [['Results Pulled: ' + currentDate]],
-                    {
-                        origin: 'A21',
                     }
-                );
 
-                XLSX.writeFile(wb, fileName);
+                    avgs = results.reduce((res, current) => {
+                        return res.concat(Array(3).fill(current));
+                    }, []);
 
-                countClicks('hit');
-                alert('Report created successfully!');
+                    for (let i = 0; i < finalResults.length; i++) {
+                        finalResults[i]['Average Lift Opens'] =
+                            (
+                                ((avgs[i][1][1] + avgs[i][2][1]) /
+                                    (avgs[i][1][0] + avgs[i][2][0]) /
+                                    (avgs[i][0][1] / avgs[i][0][0]) -
+                                    1) *
+                                100
+                            ).toFixed(2) + '%';
+                        finalResults[i]['Average Lift Clicks'] =
+                            (
+                                ((avgs[i][1][2] + avgs[i][2][2]) /
+                                    (avgs[i][1][0] + avgs[i][2][0]) /
+                                    (avgs[i][0][2] / avgs[i][0][0]) -
+                                    1) *
+                                100
+                            ).toFixed(2) + '%';
+                        finalResults[i]['Average Lift Conversions'] =
+                            (
+                                ((avgs[i][1][3] + avgs[i][2][3]) /
+                                    (avgs[i][1][0] + avgs[i][2][0]) /
+                                    (avgs[i][0][3] / avgs[i][0][0]) -
+                                    1) *
+                                100
+                            ).toFixed(2) + '%';
+                        const incRevenue =
+                            ((avgs[i][1][4] + avgs[i][2][4]) /
+                                (avgs[i][1][0] + avgs[i][2][0]) -
+                                avgs[i][0][4] / avgs[i][0][0]) *
+                            (avgs[i][1][0] + avgs[i][2][0]);
+                        finalResults[i]['Incremental Revenue'] =
+                            incRevenue >= 0
+                                ? '$' + addCommas(incRevenue.toFixed(2))
+                                : '-$' +
+                                  addCommas(Math.abs(incRevenue).toFixed(2));
+                    }
+                };
+                setTimeout(() => {
+                    downloadXL();
+                }, '1000');
 
-                location.reload();
+                reader.readAsBinaryString(file[x]);
             }
-        </script>
-    </body>
+        }
+
+        function downloadXL(fileName) {
+            fileName = fileName || 'GapFinalReport.xlsx';
+            const ws1 = XLSX.utils.json_to_sheet(finalResults),
+                ws2 = XLSX.utils.json_to_sheet(rawData),
+                wb = XLSX.utils.book_new();
+
+            XLSX.utils.book_append_sheet(wb, ws1, 'Results');
+            XLSX.utils.book_append_sheet(wb, ws2, 'Raw Data');
+            const merge = [
+                { s: { r: 1, c: 0 }, e: { r: 3, c: 0 } },
+                { s: { r: 4, c: 0 }, e: { r: 6, c: 0 } },
+                { s: { r: 7, c: 0 }, e: { r: 9, c: 0 } },
+                { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } },
+                { s: { r: 13, c: 0 }, e: { r: 15, c: 0 } },
+                { s: { r: 16, c: 0 }, e: { r: 18, c: 0 } },
+                { s: { r: 1, c: 9 }, e: { r: 3, c: 9 } },
+                { s: { r: 4, c: 9 }, e: { r: 6, c: 9 } },
+                { s: { r: 7, c: 9 }, e: { r: 9, c: 9 } },
+                { s: { r: 10, c: 9 }, e: { r: 12, c: 9 } },
+                { s: { r: 13, c: 9 }, e: { r: 15, c: 9 } },
+                { s: { r: 16, c: 9 }, e: { r: 18, c: 9 } },
+                { s: { r: 1, c: 11 }, e: { r: 3, c: 11 } },
+                { s: { r: 4, c: 11 }, e: { r: 6, c: 11 } },
+                { s: { r: 7, c: 11 }, e: { r: 9, c: 11 } },
+                { s: { r: 10, c: 11 }, e: { r: 12, c: 11 } },
+                { s: { r: 13, c: 11 }, e: { r: 15, c: 11 } },
+                { s: { r: 16, c: 11 }, e: { r: 18, c: 11 } },
+                { s: { r: 1, c: 13 }, e: { r: 3, c: 13 } },
+                { s: { r: 4, c: 13 }, e: { r: 6, c: 13 } },
+                { s: { r: 7, c: 13 }, e: { r: 9, c: 13 } },
+                { s: { r: 10, c: 13 }, e: { r: 12, c: 13 } },
+                { s: { r: 13, c: 13 }, e: { r: 15, c: 13 } },
+                { s: { r: 16, c: 13 }, e: { r: 18, c: 13 } },
+                { s: { r: 1, c: 14 }, e: { r: 3, c: 14 } },
+                { s: { r: 4, c: 14 }, e: { r: 6, c: 14 } },
+                { s: { r: 7, c: 14 }, e: { r: 9, c: 14 } },
+                { s: { r: 10, c: 14 }, e: { r: 12, c: 14 } },
+                { s: { r: 13, c: 14 }, e: { r: 15, c: 14 } },
+                { s: { r: 16, c: 14 }, e: { r: 18, c: 14 } },
+            ];
+            ws1['!merges'] = merge;
+
+            for (let i = 1; i < inputs.length; i += 3) {
+                ws1['A' + (i + 1)].l = {
+                    Target: inputs[i],
+                };
+            }
+
+            XLSX.utils.sheet_add_aoa(
+                ws1,
+                [['Results Pulled: ' + currentDate]],
+                {
+                    origin: 'A21',
+                }
+            );
+
+            XLSX.writeFile(wb, fileName);
+
+            countClicks('hit');
+            alert('Report created successfully!');
+
+            location.reload();
+        }
+    </script>
 </html>
