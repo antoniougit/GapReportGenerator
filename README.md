@@ -1,7 +1,5 @@
 # Gap reporting v1.0.0
 
-Persado EMEA SDE team
-george.antoniou@persado.com
 First revision: 01/02/2023
 
 ## Revisions
