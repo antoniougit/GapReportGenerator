@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- prettier-ignore -->
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,328 +8,369 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <title>Gap Report Generator</title>
-        <meta
-            name="google-signin-client_id"
-            content="608858293726-kd126iiefgor24ikhvepdesecuo0udj6"
-        />
-        <meta
-            name="google-signin-scope"
-            content="https://www.googleapis.com/auth/analytics.readonly"
-        />
-        <!-- prettier-ignore -->
-        <style>
-           h2{font-weight:700;font-size:35px;text-align:center;position:relative}h2 i{font-style:normal;background:#fff;position:relative;padding:10px}:focus{outline:0}input[type=text]{color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}:focus{outline:0}.spec{float:left;width:30%;margin:15px 10px;position:relative}[type=text]{color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}.inputText{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.inputText~.focus-border:after,.inputText~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.inputText~.focus-border:after{top:auto;bottom:0}.inputText~.focus-border i:after,.inputText~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.inputText~.focus-border i:after{left:auto;right:0}.inputText:focus~.focus-border:after,.inputText:focus~.focus-border:before{left:0;width:100%;transition:.4s}.inputText:focus~.focus-border i:after,.inputText:focus~.focus-border i:before{top:0;height:100%;transition:.6s}.inputText{border:1px solid #ccc;padding:7px 14px;transition:.4s;background:0 0}.inputText{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.inputText~.focus-border:after,.inputText~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.inputText~.focus-border:after{top:auto;bottom:0}.inputText~.focus-border i:after,.inputText~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.inputText~.focus-border i:after{left:auto;right:0}.inputText:focus~.focus-border:after,.inputText:focus~.focus-border:before{left:0;width:100%;transition:.4s}.inputText:focus~.focus-border i:after,.inputText:focus~.focus-border i:before{top:0;height:100%;transition:.6s}#file,#loader{position:absolute}#container,#file{width:100%;height:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#file{cursor:pointer}#clickCounter,#container,#loader,h1,h2{text-align:center}h2{font-size:20px}h3{font-weight:400;margin-bottom:20px}#loader{left:50%;top:50%;z-index:1;width:120px;height:120px;margin:-76px 0 0 -76px;border-radius:50%;border-top:16px solid #4285f4;border-right:16px solid #000d42;border-bottom:16px solid #fbbc05;border-left:16px solid #34a853;-webkit-animation:2s linear infinite spin;animation:2s linear infinite spin;display:none}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.animate-bottom{position:relative;-webkit-animation-name:animateBottom;-webkit-animation-duration:1s;animation-name:animateBottom;animation-duration:1s}@-webkit-keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}@keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}body{font-family:Verdana,sans-serif}p{margin:0;padding:0}#container{margin:0 auto}#campaignName,#portalLink{font-size:16px;width:400px;height:20px}.options{margin:0 20px}.report{font-weight:700;margin:.5em}#omniDiv,.final{margin-top:30px}#clickCounter{font-size:12px}.omni{position:relative;border:1px solid #000d42;border-radius:10px;display:inline-block;padding:45px 60px}.fileName{font-size:.85rem;color:#555}#file{top:0;left:0;opacity:0;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:0;text-indent:-100px}.omni>span{color:#ccc;font-size:14px;font-weight:400}:checked+label.radio{background:rgba(234,67,53,.3);border-radius:10px}#campaignName,#genoIds,#portalLink{padding:10px;margin:10px 0;border-radius:10px;text-align:center}#campaignName:focus,#genoIds,#portalLink{outline:0}#genoIds{font-size:16px}#container .specs{height:400px;width:90%;margin:0 auto}
-        </style>
-
-        <script
-            lang="javascript"
-            src="https://cdn.sheetjs.com/xlsx-0.19.2/package/dist/xlsx.mini.min.js"
-        ></script>
+        <style>body,input{font-family:'Open Sans',sans-serif}h2{font-weight:700;font-size:20px;text-align:center;position:relative}h3{font-size:14px;text-align:center;font-weight:400;margin-bottom:20px}input[type=text]{font-size:16px;color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}:focus{outline:0}.spec{float:left;width:30%;margin:15px 10px;position:relative}[type=text]{color:#333;width:100%;box-sizing:border-box;letter-spacing:1px}.input-text{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.input-text~.focus-border:after,.input-text~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.input-text~.focus-border:after{top:auto;bottom:0}.input-text~.focus-border i:after,.input-text~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.input-text~.focus-border i:after{left:auto;right:0}.input-text:focus~.focus-border:after,.input-text:focus~.focus-border:before{left:0;width:100%;transition:.4s}.input-text:focus~.focus-border i:after,.input-text:focus~.focus-border i:before{top:0;height:100%;transition:.6s}.input-text{border:1px solid #ccc;padding:7px 14px;transition:.4s;background:0 0}.input-text{border:1px solid #ccc;padding:7px 14px 9px;transition:.4s}.input-text~.focus-border:after,.input-text~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;transition:.4s}.input-text~.focus-border:after{top:auto;bottom:0}.input-text~.focus-border i:after,.input-text~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;transition:.6s}.input-text~.focus-border i:after{left:auto;right:0}.input-text:focus~.focus-border:after,.input-text:focus~.focus-border:before{left:0;width:100%;transition:.4s}.input-text:focus~.focus-border i:after,.input-text:focus~.focus-border i:before{top:0;height:100%;transition:.6s}#file{position:absolute}#container,#file{width:100%;height:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#file{cursor:pointer}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.animate-bottom{position:relative;-webkit-animation-name:animateBottom;-webkit-animation-duration:1s;animation-name:animateBottom;animation-duration:1s}@-webkit-keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}@keyframes animateBottom{from{bottom:-100px;opacity:0}to{bottom:0;opacity:1}}p{margin:0;padding:0}#container{text-align:center}.report{font-weight:700;margin:.5em}#omni-div{margin-top:30px}#click-counter{font-size:12px}.omni{position:relative;border:1px dashed #000d42;border-radius:10px;display:inline-block;padding:25px 80px}#file{top:0;left:0;opacity:0;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:0;text-indent:-100px}.omni>span{color:#ccc;font-size:16px;font-weight:400}#container .inputs{height:400px;width:90%;margin:0 auto}i{margin-bottom:20px;width:100%;color:#999}.icon-shadow{position:relative;display:block;width:95px;height:7px;border-radius:100%;background-color:#eee;top:-17px;margin-left:auto;margin-right:auto}.file-div{color:#999}#file-name{color:#333}#omni-title{color:#333;font-weight:700;display:inline-block;margin-bottom:20px}.inputs{display:block}#omni-div{display:block}#download-counter,#effort-counter{font-weight:700}</style> <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.2/package/dist/xlsx.mini.min.js" ></script> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
     </head>
-    <!-- prettier-ignore -->
-    <body><h1>Gap Report Generator</h1> <h2> <span style="color: red">[</span>George Antoniou - EMEA SDE team<span style="color: red">]</span> </h2> <h3 id="clickCounter"> Final reports created: <span style="font-weight: bold"></span>! </h3> <div id="container" class="animate-bottom"> <div class="specs" style="display: block"> <div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName1" name="campaignName1" placeholder="Campaign Name #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink1" name="portalLink1" placeholder="Portal Link #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds1" name="genoIds1" placeholder="Geno IDs #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName2" name="campaignName2" placeholder="Campaign Name #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink2" name="portalLink2" placeholder="Portal Link #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds2" name="genoIds2" placeholder="Geno IDs #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName3" name="campaignName3" placeholder="Campaign Name #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink3" name="portalLink3" placeholder="Portal Link #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds3" name="genoIds3" placeholder="Geno IDs #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName4" name="campaignName4" placeholder="Campaign Name #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink4" name="portalLink4" placeholder="Portal Link #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds4" name="genoIds4" placeholder="Geno IDs #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName5" name="campaignName5" placeholder="Campaign Name #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink5" name="portalLink5" placeholder="Portal Link #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds5" name="genoIds5" placeholder="Geno IDs #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="campaignName6" name="campaignName6" placeholder="Campaign Name #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="portalLink6" name="portalLink6" placeholder="Portal Link #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec inputDiv"> <input class="inputText" type="text" id="genoIds6" name="genoIds6" placeholder="Geno IDs #6"/> <span class="focus-border"> <i></i> </span> </div></div><div class="fileDiv"> <div id="omniDiv" style="display: block"> <label class="report omni" for="file" >Upload Omniture report<br/> <span>(click to browse or drag & drop file here)</span> <input name="file" id="file" class="file" type="file" accept=".xl*,.csv" onchange="createReport(this.files);"/> </label> </div><p class="fileName"></p></div></div></body>
-    <script>
-        function countClicks(endpoint) {
-            const xhr = new XMLHttpRequest();
-            xhr.open(
-                'GET',
-                `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgen_test`
-            );
-            xhr.responseType = 'json';
-            if (endpoint === 'info') {
-                xhr.onload = function () {
-                    document.querySelector('#clickCounter > span').textContent =
-                        this.response.value;
-                };
+    <body>
+        <!-- prettier-ignore -->
+        <div id="container" class="animate-bottom"> <h1>Gap Report Generator</h1> <h2> <span style="color: red">[ </span>George Antoniou - EMEA SDE team<span style="color: red">]</span> </h2> <div class="inputs"> <div class="input-set" id="input-set1"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name1" name="campaign-name1" placeholder="Campaign Name #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link1" name="portal-link1" placeholder="Portal Link #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids1" name="geno-ids1" placeholder="Geno IDs #1"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set2"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name2" name="campaign-name2" placeholder="Campaign Name #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link2" name="portal-link2" placeholder="Portal Link #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids2" name="geno-ids2" placeholder="Geno IDs #2"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set3"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name3" name="campaign-name3" placeholder="Campaign Name #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link3" name="portal-link3" placeholder="Portal Link #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids3" name="geno-ids3" placeholder="Geno IDs #3"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set4"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name4" name="campaign-name4" placeholder="Campaign Name #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link4" name="portal-link4" placeholder="Portal Link #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids4" name="geno-ids4" placeholder="Geno IDs #4"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set5"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name5" name="campaign-name5" placeholder="Campaign Name #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link5" name="portal-link5" placeholder="Portal Link #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids5" name="geno-ids5" placeholder="Geno IDs #5"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set6"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name6" name="campaign-name6" placeholder="Campaign Name #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link6" name="portal-link6" placeholder="Portal Link #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids6" name="geno-ids6" placeholder="Geno IDs #6"/> <span class="focus-border"> <i></i> </span> </div></div></div><div class="file-div"> <div id="omni-div"> <label class="report omni" for="file" ><span id="omni-title">Omniture report</span ><i class="fas fa-file-upload fa-7x"></i ><span class="icon-shadow"></span ><span >Click to browse <span class="drag">or drop file here</span></span > <input name="file" id="file" class="file" type="file" accept=".xl*,.csv" onchange="createReport(this.files);"/> </label> </div><p class="file-name" id="file-name">No file selected!</p></div></div>
+        <script>
+            const file = document.getElementById('file');
+
+            file.addEventListener('change', (e) => {
+                const [file] = e.target.files,
+                    { name: fileName, size } = file,
+                    fileSize = (size / 1000).toFixed(2),
+                    fileNameAndSize = `${fileName} - ${addCommas(fileSize)} KB`;
+                document.querySelector('.file-name').textContent =
+                    fileNameAndSize;
+            });
+
+            // function countClicks(endpoint) {
+            //     const xhr = new XMLHttpRequest();
+            //     xhr.open(
+            //         'GET',
+            //         `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgen_test`
+            //     );
+            //     xhr.responseType = 'json';
+            //     xhr.onload = function () {
+            //         if (endpoint === 'info') {
+            //             document.querySelector('#download-counter').textContent =
+            //                 this.response.value;
+            //             document.querySelector('#effort-counter').textContent =
+            //                 addCommas(this.response.value * 25);
+            //         }
+            //     };
+            //     xhr.send();
+            // }
+
+            //    countClicks('info');
+
+            function addCommas(x) {
+                return x
+                    .toString()
+                    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
             }
-            xhr.send();
-        }
 
-        countClicks('info');
+            const date = new Date();
+            const currentDate = date.toLocaleString('default', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+            });
 
-        function addCommas(x) {
-            return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
-        }
+            let rawData = [];
+            const finalResults = [],
+                results = [],
+                inputs = [];
 
-        const date = new Date();
-        const currentDate = date.toLocaleString('default', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-        });
+            function validateInputs() {
+                let inputSets = [];
+                for (let i = 1; i < 7; i++) {
+                    inputSets.push(
+                        document
+                            .getElementById('input-set' + i)
+                            .getElementsByTagName('input')
+                    );
+                }
 
-        let rawData = [];
-        const finalResults = [],
-            inputs = [];
-
-        function createReport(file) {
-            const allInputs = document.getElementsByClassName('inputText');
-
-            for (let i = 0; i < allInputs.length; i++) {
-                if (allInputs[i].value.trim().length) {
-                    inputs.push(allInputs[i].value);
+                for (let i = 0; i < 6; i++) {
+                    const [input1, input2, input3] = inputSets[i];
+                    if (
+                        (input1.value && (!input2.value || !input3.value)) ||
+                        (input2.value && (!input1.value || !input3.value)) ||
+                        (input3.value && (!input1.value || !input2.value))
+                    ) {
+                        throw new Error('Missing campaign data!');
+                    }
                 }
             }
 
-            if (inputs.length % 3 !== 0) {
-                alert('Please fill in the required data!');
-                return;
-            }
+            function createReport(file) {
+                try {
+                    validateInputs();
+                } catch (error) {
+                    alert(error.message);
+                    return;
+                }
+                const allInputs = document.getElementsByClassName('input-text');
 
-            for (let x = 0; x < file.length; x++) {
-                const name = file[x].name,
-                    reader = new FileReader();
+                for (let i = 0; i < allInputs.length; i++) {
+                    if (allInputs[i].value.trim().length) {
+                        inputs.push(allInputs[i].value);
+                    }
+                }
 
-                reader.onload = function (e) {
-                    const fileData = e.target.result,
-                        wb = XLSX.read(fileData, {
-                            type: 'binary',
+                for (let x = 0; x < file.length; x++) {
+                    const name = file[x].name,
+                        reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        const fileData = e.target.result,
+                            wb = XLSX.read(fileData, {
+                                type: 'binary',
+                            });
+                        const xlRowObj = XLSX.utils.sheet_to_row_object_array(
+                            wb.Sheets['Sheet1']
+                        );
+
+                        rawData = xlRowObj.map((a) => {
+                            return { ...a };
                         });
-                    const xlRowObj = XLSX.utils.sheet_to_row_object_array(
-                        wb.Sheets['Sheet1']
-                    );
-
-                    rawData = xlRowObj.map((a) => {
-                        return { ...a };
-                    });
-                    const data = rawData.map((a) => {
-                        return { ...a };
-                    });
-
-                    const results = [],
-                        inputObj = [];
-
-                    for (let z = 0; z < inputs.length / 3; z++) {
-                        inputObj.push({
-                            'Campaign Name': inputs[z * 3],
-                            'Portal Link': inputs[z * 3 + 1],
-                            'Geno Ids': inputs[z * 3 + 2]
-                                .match(/(?:\d+\.)?\d+/g)
-                                .filter(Number),
+                        const data = rawData.map((a) => {
+                            return { ...a };
                         });
-                        const ctrl =
-                            inputObj[z]['Geno Ids'][
-                                inputObj[z]['Geno Ids'].length - 1
+
+                        const inputObj = [];
+
+                        for (let z = 0; z < inputs.length / 3; z++) {
+                            inputObj.push({
+                                'Campaign Name': inputs[z * 3],
+                                'Portal Link': inputs[z * 3 + 1],
+                                'Geno Ids': inputs[z * 3 + 2]
+                                    .match(/(?:\d+\.)?\d+/g)
+                                    .filter(Number),
+                            });
+                            if (
+                                inputObj[z]['Geno Ids'][2] >
+                                    inputObj[z]['Geno Ids'][0] &&
+                                inputObj[z]['Geno Ids'][2] >
+                                    inputObj[z]['Geno Ids'][1]
+                            ) {
+                                const ctrl = inputObj[z]['Geno Ids'][2];
+                                inputObj[z]['Geno Ids'].splice(2, 1);
+                                inputObj[z]['Geno Ids'].unshift(ctrl);
+                            }
+
+                            updateNetDemand(data);
+
+                            results.push(
+                                Array.from(Array(3).fill(0), () =>
+                                    new Array(5).fill(0)
+                                )
+                            );
+
+                            const metrics = [
+                                'Delivered (event13)',
+                                'Opened (event14)',
+                                'Clicked (event15)',
+                                'Orders',
+                                'Net Demand',
                             ];
-                        inputObj[z]['Geno Ids'].splice(
-                            inputObj[z]['Geno Ids'].length - 1,
-                            1
-                        );
-                        inputObj[z]['Geno Ids'].unshift(ctrl);
 
-                        for (let y = 0; y < data.length; y++) {
-                            data[y]['Net Demand'] =
-                                data[y]['Revenue (Gross Merchandise)'] -
-                                (data[y][
-                                    'Line + Brand Discount (e43) (event43)'
-                                ] +
-                                    data[y][
-                                        'Order Level Discount [non-PLCC] (e44) (event44)'
-                                    ] +
-                                    data[y]['PLCC Discount (e48) (event48)'] +
-                                    data[y][
-                                        'Pay with Points Discount (e329) (event329)'
-                                    ]);
-                        }
+                            const variants = ['C', 'T1', 'T2'];
 
-                        results.push(
-                            Array.from(Array(3).fill(0), () =>
-                                new Array(5).fill(0)
-                            )
-                        );
-
-                        const metrics = [
-                            'Delivered (event13)',
-                            'Opened (event14)',
-                            'Clicked (event15)',
-                            'Orders',
-                            'Net Demand',
-                        ];
-
-                        const variants = ['C', 'T1', 'T2'];
-
-                        for (let i = 0; i < variants.length; i++) {
-                            for (let j = 0; j < data.length; j++) {
-                                for (let k = 0; k < metrics.length; k++) {
-                                    if (
-                                        data[j][
-                                            'Email version (v11) (evar11)'
-                                        ].includes(inputObj[z]['Geno Ids'][i])
-                                    ) {
+                            for (let i = 0; i < variants.length; i++) {
+                                for (let j = 0; j < data.length; j++) {
+                                    for (let k = 0; k < metrics.length; k++) {
                                         if (
                                             data[j][
                                                 'Email version (v11) (evar11)'
-                                            ].includes('PERSXC1X')
+                                            ].includes(
+                                                inputObj[z]['Geno Ids'][i]
+                                            )
                                         ) {
-                                            results[z][i][k] +=
-                                                data[j][metrics[k]];
-                                        } else if (
-                                            data[j][
-                                                'Email version (v11) (evar11)'
-                                            ].includes('PERSXT1X')
-                                        ) {
-                                            results[z][i][k] +=
-                                                data[j][metrics[k]];
-                                        } else if (
-                                            data[j][
-                                                'Email version (v11) (evar11)'
-                                            ].includes('PERSXT2X')
-                                        ) {
-                                            results[z][i][k] +=
-                                                data[j][metrics[k]];
+                                            if (
+                                                data[j][
+                                                    'Email version (v11) (evar11)'
+                                                ].includes('PERSXC1X')
+                                            ) {
+                                                results[z][i][k] +=
+                                                    data[j][metrics[k]];
+                                            } else if (
+                                                data[j][
+                                                    'Email version (v11) (evar11)'
+                                                ].includes('PERSXT1X')
+                                            ) {
+                                                results[z][i][k] +=
+                                                    data[j][metrics[k]];
+                                            } else if (
+                                                data[j][
+                                                    'Email version (v11) (evar11)'
+                                                ].includes('PERSXT2X')
+                                            ) {
+                                                results[z][i][k] +=
+                                                    data[j][metrics[k]];
+                                            }
                                         }
+                                        results[z][i][k] = parseFloat(
+                                            results[z][i][k].toFixed(2)
+                                        );
                                     }
-                                    results[z][i][k] = parseFloat(
-                                        results[z][i][k].toFixed(2)
-                                    );
                                 }
+
+                                finalResults.push({
+                                    'Experiment Name & Link':
+                                        inputObj[z]['Campaign Name'],
+                                    Variant: variants[i],
+                                    Delivered: results[z][i][0],
+                                    Opened: results[z][i][1],
+                                    Clicked: results[z][i][2],
+                                    Orders: results[z][i][3],
+                                    'Net Demand': results[z][i][4],
+                                    '': '',
+                                    'Open Rate':
+                                        (
+                                            (results[z][i][1] /
+                                                results[z][i][0]) *
+                                            100
+                                        ).toFixed(2) + '%',
+                                    'Average Lift Opens': 0,
+                                    'Click Rate':
+                                        (
+                                            (results[z][i][2] /
+                                                results[z][i][0]) *
+                                            100
+                                        ).toFixed(2) + '%',
+                                    'Average Lift Clicks': 0,
+                                    'Conversion Rate':
+                                        (
+                                            (results[z][i][3] /
+                                                results[z][i][0]) *
+                                            100
+                                        ).toFixed(2) + '%',
+                                    'Average Lift Conversions': 0,
+                                    'Incremental Revenue': 0,
+                                    'Geno ID': inputObj[z]['Geno Ids'][i],
+                                });
                             }
-
-                            finalResults.push({
-                                'Experiment Name & Link':
-                                    inputObj[z]['Campaign Name'],
-                                Variant: variants[i],
-                                Delivered: results[z][i][0],
-                                Opened: results[z][i][1],
-                                Clicked: results[z][i][2],
-                                Orders: results[z][i][3],
-                                'Net Demand': results[z][i][4],
-                                '': '',
-                                'Open Rate':
-                                    (
-                                        (results[z][i][1] / results[z][i][0]) *
-                                        100
-                                    ).toFixed(2) + '%',
-                                'Average Lift Opens': 0,
-                                'Click Rate':
-                                    (
-                                        (results[z][i][2] / results[z][i][0]) *
-                                        100
-                                    ).toFixed(2) + '%',
-                                'Average Lift Clicks': 0,
-                                'Conversion Rate':
-                                    (
-                                        (results[z][i][3] / results[z][i][0]) *
-                                        100
-                                    ).toFixed(2) + '%',
-                                'Average Lift Conversions': 0,
-                                'Incremental Revenue': 0,
-                                'Geno ID': inputObj[z]['Geno Ids'][i],
-                            });
                         }
-                    }
 
-                    avgs = results.reduce((res, current) => {
-                        return res.concat(Array(3).fill(current));
-                    }, []);
+                        updateAvgs(results);
+                    };
+                    const fileInput = document.getElementById('file');
+                    const fName = fileInput.files[0].name;
+                    const fileSplit = fName.split('_');
+                    const fileBrand = fileSplit[0],
+                        fileDate = fileSplit[fileSplit.length - 1];
+                    const fileName = fileBrand + '_' + fileDate;
+                    setTimeout(() => {
+                        downloadXL(fileName);
+                    }, '1000');
 
-                    for (let i = 0; i < finalResults.length; i++) {
-                        finalResults[i]['Average Lift Opens'] =
-                            (
-                                ((avgs[i][1][1] + avgs[i][2][1]) /
-                                    (avgs[i][1][0] + avgs[i][2][0]) /
-                                    (avgs[i][0][1] / avgs[i][0][0]) -
-                                    1) *
-                                100
-                            ).toFixed(2) + '%';
-                        finalResults[i]['Average Lift Clicks'] =
-                            (
-                                ((avgs[i][1][2] + avgs[i][2][2]) /
-                                    (avgs[i][1][0] + avgs[i][2][0]) /
-                                    (avgs[i][0][2] / avgs[i][0][0]) -
-                                    1) *
-                                100
-                            ).toFixed(2) + '%';
-                        finalResults[i]['Average Lift Conversions'] =
-                            (
-                                ((avgs[i][1][3] + avgs[i][2][3]) /
-                                    (avgs[i][1][0] + avgs[i][2][0]) /
-                                    (avgs[i][0][3] / avgs[i][0][0]) -
-                                    1) *
-                                100
-                            ).toFixed(2) + '%';
-                        const incRevenue =
-                            ((avgs[i][1][4] + avgs[i][2][4]) /
-                                (avgs[i][1][0] + avgs[i][2][0]) -
-                                avgs[i][0][4] / avgs[i][0][0]) *
-                            (avgs[i][1][0] + avgs[i][2][0]);
-                        finalResults[i]['Incremental Revenue'] =
-                            incRevenue >= 0
-                                ? '$' + addCommas(incRevenue.toFixed(2))
-                                : '-$' +
-                                  addCommas(Math.abs(incRevenue).toFixed(2));
-                    }
-                };
-                setTimeout(() => {
-                    downloadXL();
-                }, '1000');
-
-                reader.readAsBinaryString(file[x]);
-            }
-        }
-
-        function downloadXL(fileName) {
-            fileName = fileName || 'GapFinalReport.xlsx';
-            const ws1 = XLSX.utils.json_to_sheet(finalResults),
-                ws2 = XLSX.utils.json_to_sheet(rawData),
-                wb = XLSX.utils.book_new();
-
-            XLSX.utils.book_append_sheet(wb, ws1, 'Results');
-            XLSX.utils.book_append_sheet(wb, ws2, 'Raw Data');
-            const merge = [
-                { s: { r: 1, c: 0 }, e: { r: 3, c: 0 } },
-                { s: { r: 4, c: 0 }, e: { r: 6, c: 0 } },
-                { s: { r: 7, c: 0 }, e: { r: 9, c: 0 } },
-                { s: { r: 10, c: 0 }, e: { r: 12, c: 0 } },
-                { s: { r: 13, c: 0 }, e: { r: 15, c: 0 } },
-                { s: { r: 16, c: 0 }, e: { r: 18, c: 0 } },
-                { s: { r: 1, c: 9 }, e: { r: 3, c: 9 } },
-                { s: { r: 4, c: 9 }, e: { r: 6, c: 9 } },
-                { s: { r: 7, c: 9 }, e: { r: 9, c: 9 } },
-                { s: { r: 10, c: 9 }, e: { r: 12, c: 9 } },
-                { s: { r: 13, c: 9 }, e: { r: 15, c: 9 } },
-                { s: { r: 16, c: 9 }, e: { r: 18, c: 9 } },
-                { s: { r: 1, c: 11 }, e: { r: 3, c: 11 } },
-                { s: { r: 4, c: 11 }, e: { r: 6, c: 11 } },
-                { s: { r: 7, c: 11 }, e: { r: 9, c: 11 } },
-                { s: { r: 10, c: 11 }, e: { r: 12, c: 11 } },
-                { s: { r: 13, c: 11 }, e: { r: 15, c: 11 } },
-                { s: { r: 16, c: 11 }, e: { r: 18, c: 11 } },
-                { s: { r: 1, c: 13 }, e: { r: 3, c: 13 } },
-                { s: { r: 4, c: 13 }, e: { r: 6, c: 13 } },
-                { s: { r: 7, c: 13 }, e: { r: 9, c: 13 } },
-                { s: { r: 10, c: 13 }, e: { r: 12, c: 13 } },
-                { s: { r: 13, c: 13 }, e: { r: 15, c: 13 } },
-                { s: { r: 16, c: 13 }, e: { r: 18, c: 13 } },
-                { s: { r: 1, c: 14 }, e: { r: 3, c: 14 } },
-                { s: { r: 4, c: 14 }, e: { r: 6, c: 14 } },
-                { s: { r: 7, c: 14 }, e: { r: 9, c: 14 } },
-                { s: { r: 10, c: 14 }, e: { r: 12, c: 14 } },
-                { s: { r: 13, c: 14 }, e: { r: 15, c: 14 } },
-                { s: { r: 16, c: 14 }, e: { r: 18, c: 14 } },
-            ];
-            ws1['!merges'] = merge;
-
-            for (let i = 1; i < inputs.length; i += 3) {
-                ws1['A' + (i + 1)].l = {
-                    Target: inputs[i],
-                };
-            }
-
-            XLSX.utils.sheet_add_aoa(
-                ws1,
-                [['Results Pulled: ' + currentDate]],
-                {
-                    origin: 'A21',
+                    reader.readAsBinaryString(file[x]);
                 }
-            );
+            }
 
-            XLSX.writeFile(wb, fileName);
+            function updateNetDemand(data) {
+                for (let i = 0; i < data.length; i++) {
+                    data[i]['Net Demand'] =
+                        data[i]['Revenue (Gross Merchandise)'] -
+                        (data[i]['Line + Brand Discount (e43) (event43)'] +
+                            data[i][
+                                'Order Level Discount [non-PLCC] (e44) (event44)'
+                            ] +
+                            data[i]['PLCC Discount (e48) (event48)'] +
+                            data[i][
+                                'Pay with Points Discount (e329) (event329)'
+                            ]);
+                }
+            }
 
-            countClicks('hit');
-            alert('Report created successfully!');
+            function updateAvgs(results) {
+                const avgs = results.reduce((res, current) => {
+                    return res.concat(Array(3).fill(current));
+                }, []);
 
-            location.reload();
-        }
-    </script>
+                for (let i = 0; i < finalResults.length; i++) {
+                    finalResults[i]['Average Lift Opens'] =
+                        (
+                            ((avgs[i][1][1] + avgs[i][2][1]) /
+                                (avgs[i][1][0] + avgs[i][2][0]) /
+                                (avgs[i][0][1] / avgs[i][0][0]) -
+                                1) *
+                            100
+                        ).toFixed(2) + '%';
+                    finalResults[i]['Average Lift Clicks'] =
+                        (
+                            ((avgs[i][1][2] + avgs[i][2][2]) /
+                                (avgs[i][1][0] + avgs[i][2][0]) /
+                                (avgs[i][0][2] / avgs[i][0][0]) -
+                                1) *
+                            100
+                        ).toFixed(2) + '%';
+                    finalResults[i]['Average Lift Conversions'] =
+                        (
+                            ((avgs[i][1][3] + avgs[i][2][3]) /
+                                (avgs[i][1][0] + avgs[i][2][0]) /
+                                (avgs[i][0][3] / avgs[i][0][0]) -
+                                1) *
+                            100
+                        ).toFixed(2) + '%';
+                    const incRevenue =
+                        ((avgs[i][1][4] + avgs[i][2][4]) /
+                            (avgs[i][1][0] + avgs[i][2][0]) -
+                            avgs[i][0][4] / avgs[i][0][0]) *
+                        (avgs[i][1][0] + avgs[i][2][0]);
+                    finalResults[i]['Incremental Revenue'] =
+                        incRevenue >= 0
+                            ? '$' + addCommas(incRevenue.toFixed(2))
+                            : '-$' + addCommas(Math.abs(incRevenue).toFixed(2));
+                }
+            }
+
+            function downloadXL(fileName) {
+                try {
+                    if (inputs.length === 0) {
+                        throw new Error('No campaign data entered!');
+                    }
+
+                    fileName = fileName || 'GapFinalReport.xlsx';
+                    const ws1 = XLSX.utils.json_to_sheet(finalResults),
+                        ws2 = XLSX.utils.json_to_sheet(rawData),
+                        wb = XLSX.utils.book_new();
+
+                    XLSX.utils.book_append_sheet(wb, ws1, 'Results');
+                    XLSX.utils.book_append_sheet(wb, ws2, 'Raw Data');
+                    const merge = [];
+                    for (let i = 1; i < 19; i += 3) {
+                        merge.push({
+                            s: { r: i, c: 0 },
+                            e: { r: i + 2, c: 0 },
+                        });
+                        merge.push({
+                            s: { r: i, c: 9 },
+                            e: { r: i + 2, c: 9 },
+                        });
+                        merge.push({
+                            s: { r: i, c: 11 },
+                            e: { r: i + 2, c: 11 },
+                        });
+                        merge.push({
+                            s: { r: i, c: 13 },
+                            e: { r: i + 2, c: 13 },
+                        });
+                        merge.push({
+                            s: { r: i, c: 14 },
+                            e: { r: i + 2, c: 14 },
+                        });
+                    }
+                    ws1['!merges'] = merge;
+
+                    for (let i = 1; i < inputs.length; i += 3) {
+                        ws1['A' + (i + 1)].l = {
+                            Target: inputs[i],
+                        };
+                    }
+
+                    XLSX.utils.sheet_add_aoa(
+                        ws1,
+                        [['Results Pulled: ' + currentDate]],
+                        {
+                            origin: 'A21',
+                        }
+                    );
+
+                    XLSX.writeFile(wb, fileName);
+
+                    //   countClicks('hit');
+                    alert('Report created successfully!');
+
+                    location.reload();
+                } catch (error) {
+                    alert(error.message);
+                    return;
+                }
+            }
+        </script>
+    </body>
 </html>
