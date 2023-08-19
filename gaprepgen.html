@@ -295,16 +295,33 @@
 
         <script>
             window.onload = function () {
+                countClicks('info');
                 if (typeof window.FileReader !== 'function') {
                     alert(`File API isn't supported on this browser yet.`);
                 }
             };
 
+            function countClicks(endpoint) {
+                const xhr = new XMLHttpRequest();
+                xhr.open(
+                    'GET',
+                    `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgen_test`
+                );
+                xhr.responseType = 'json';
+                if (endpoint === 'info') {
+                    xhr.onload = function () {
+                        document.querySelector(
+                            '#clickCounter > span'
+                        ).textContent = this.response.value;
+                    };
+                }
+                xhr.send();
+            }
+
             let rawData = [],
                 results = [],
-                finalResults = [];
-
-            const inputs = document.getElementsByClassName('inputText');
+                finalResults = [],
+                inputs = [];
 
             const date = new Date();
             const currentDate = date.toLocaleString('default', {
@@ -330,13 +347,21 @@
                         rawData = xlRowObj;
                         const data = rawData;
 
+                        const allInputs =
+                            document.getElementsByClassName('inputText');
+
+                        for (let i = 0; i < allInputs.length; i++) {
+                            if (allInputs[i].value.trim().length) {
+                                inputs.push(allInputs[i].value);
+                            }
+                        }
                         const inputObj = [];
 
                         for (let z = 0; z < inputs.length / 3; z++) {
                             inputObj.push({
-                                'Campaign Name': inputs[z * 3].value,
-                                'Portal Link': inputs[z * 3 + 1].value,
-                                'Geno Ids': inputs[z * 3 + 2].value
+                                'Campaign Name': inputs[z * 3],
+                                'Portal Link': inputs[z * 3 + 1],
+                                'Geno Ids': inputs[z * 3 + 2]
                                     .match(/(?:\d+\.)?\d+/g)
                                     .filter(Number),
                             });
@@ -511,7 +536,7 @@
                         }
                     };
                     setTimeout(() => {
-                        downloadXL('test.xlsx');
+                        downloadXL();
                     }, '1000');
 
                     reader.readAsBinaryString(file[x]);
@@ -562,7 +587,7 @@
 
                 for (let i = 1; i < inputs.length; i += 3) {
                     ws1['A' + (i + 1)].l = {
-                        Target: inputs[i].value,
+                        Target: inputs[i],
                     };
                 }
 
@@ -576,8 +601,10 @@
 
                 XLSX.writeFile(wb, fileName);
 
-                // alert('Report created successfully!');
-                //countClicks('hit');
+                countClicks('hit');
+                alert('Report created successfully!');
+
+                location.reload();
             }
         </script>
     </body>
