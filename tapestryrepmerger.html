@@ -60,6 +60,7 @@
 
             let fileData = {},
                 GAData = {},
+                SFMCData = {},
                 results = [];
 
             function xlSerialToJsDate(date) {
@@ -70,6 +71,8 @@
 
             function readGAFile(file) {
                 results = [];
+                let conversions = 0,
+                    revenue = 0;
                 const ol = document.querySelector('#filesList ol');
                 if (ol.childNodes.length > 1) {
                     ol.innerHTML = '';
@@ -84,15 +87,29 @@
                             workbook = XLSX.read(data, {
                                 type: 'binary',
                             });
-                        const xlRowObj = XLSX.utils.sheet_to_row_object_array(
-                            workbook.Sheets['Dataset1']
-                        );
 
-                        fileData = xlRowObj[0];
+                        const xlRowObj =
+                            XLSX.utils.sheet_to_row_object_array(
+                                workbook.Sheets['Dataset4']
+                            ).length > 0
+                                ? XLSX.utils.sheet_to_row_object_array(
+                                      workbook.Sheets['Dataset4']
+                                  )
+                                : XLSX.utils.sheet_to_row_object_array(
+                                      workbook.Sheets['Dataset1']
+                                  );
+
+                        for (let i = 0; i < xlRowObj.length; i++) {
+                            if (xlRowObj[i]['Transactions'] > 0) {
+                                fileData[i] = xlRowObj[i];
+                                conversions += fileData[i]['Transactions'];
+                                revenue += fileData[i]['Revenue'];
+                            }
+                        }
 
                         GAData = {
-                            Conversions: fileData['Transactions'],
-                            Revenue: fileData['Revenue'],
+                            Conversions: conversions,
+                            Revenue: revenue,
                         };
 
                         const li = document.createElement('li');
@@ -105,11 +122,16 @@
 
             function readSFMCFile(file) {
                 results = [];
+                let deliveries = 0,
+                    opens = 0,
+                    clicks = 0;
                 const ol = document.querySelector('#filesList ol');
                 if (ol.childNodes.length > 1) {
                     ol.innerHTML = '';
                 }
-                let campaignRow = 0;
+                let campaignRow = [],
+                    nameRow = 0;
+                const dataLength = Object.keys(fileData).length;
 
                 for (let i = 0; i < file.length; i++) {
                     const name = file[i].name,
@@ -137,25 +159,42 @@
                                 secondCell.v === 'Email Content Name'
                             ) {
                                 nameRow = rowNum;
-                            } else if (
-                                secondCell &&
-                                secondCell.v === fileData['Campaign']
-                            ) {
-                                campaignRow = rowNum;
-                                break;
+                            }
+
+                            for (let j = 0; j < dataLength; j++) {
+                                if (
+                                    secondCell &&
+                                    secondCell.v === fileData[j]['Campaign']
+                                ) {
+                                    campaignRow[j] = rowNum;
+                                    const xlRowObj =
+                                        XLSX.utils.sheet_to_row_object_array(
+                                            workbook.Sheets[
+                                                workbook.SheetNames[0]
+                                            ],
+                                            { range: nameRow }
+                                        );
+                                    fileData[j] =
+                                        xlRowObj[campaignRow[j] - nameRow - 1];
+                                    deliveries +=
+                                        fileData[j]['Email Deliveries'];
+                                    opens += fileData[j]['Email Unique Opens'];
+                                    clicks +=
+                                        fileData[j]['Email Unique Clicks'];
+                                }
                             }
                         }
 
-                        const xlRowObj = XLSX.utils.sheet_to_row_object_array(
-                            workbook.Sheets[workbook.SheetNames[0]],
-                            { range: nameRow }
-                        );
-                        console.log(fileData);
-                        fileData = xlRowObj[campaignRow - nameRow - 1];
-                        console.log(fileData);
+                        SFMCData = {
+                            'Email Deliveries': deliveries,
+                            'Email Unique Opens': opens,
+                            'Email Unique Clicks': clicks,
+                        };
 
-                        fileData['Send Date'] = new Date(
-                            Date.UTC(0, 0, fileData['Send Date'] - 1)
+                        delete fileData[0]['Email Unique Unsubscribes'];
+
+                        fileData[0]['Send Date'] = new Date(
+                            Date.UTC(0, 0, fileData[0]['Send Date'] - 1)
                         )
                             .toLocaleDateString('en-GB', {
                                 day: '2-digit',
@@ -165,9 +204,22 @@
                             .split('/')
                             .join('-');
 
-                        delete fileData['Email Unique Unsubscribes'];
+                        if (dataLength > 1) {
+                            const lastIndex =
+                                fileData[0]['Email Content Name'].lastIndexOf(
+                                    '-'
+                                );
+                            fileData[0]['Email Content Name'] = fileData[0][
+                                'Email Content Name'
+                            ].substring(0, lastIndex);
+                            fileData[0]['Email Job ID'] = '';
+                        }
 
-                        resultObj = Object.assign(fileData, GAData);
+                        resultObj = Object.assign(
+                            fileData[0],
+                            SFMCData,
+                            GAData
+                        );
 
                         results.push(resultObj);
 
