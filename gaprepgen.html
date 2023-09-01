@@ -8,11 +8,11 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <title>Gap Report Generator</title>
-        <style>[type=text],input[type=text]{letter-spacing:1px;color:#333}#container,h2,h3{text-align:center}.animate-bottom,.icon-shadow,.omni,.spec,h2{position:relative}#file-name,#omni-title,[type=text]{color:#333}#omni-title,.omni{display:inline-block}#omni-title,h3,i{margin-bottom:20px}#download-counter,#effort-counter,#omni-title,.report,h2{font-weight:700}body,input{font-family:'Open Sans',sans-serif;overflow:hidden}h2{font-size:20px}.omni>span,h3{font-weight:400}h3{font-size:14px}input[type=text]{font-size:16px;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}:focus{outline:0}.spec{float:left;width:30%;margin:15px 1%}[type=text]{width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}.file-div,i{color:#999}.input-text{border:1px solid #ccc;padding:7px 14px 9px;-webkit-transition:.4s;-o-transition:.4s;transition:.4s;background:0 0}.input-text~.focus-border:after,.input-text~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;-webkit-transition:.4s;-o-transition:.4s;transition:.4s}.input-text~.focus-border:after{top:auto;bottom:0}.input-text~.focus-border i:after,.input-text~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;-webkit-transition:.6s;-o-transition:.6s;transition:.6s}.input-text~.focus-border i:after{left:auto;right:0}.input-text:focus~.focus-border:after,.input-text:focus~.focus-border:before{left:0;width:100%;-webkit-transition:.4s;-o-transition:.4s;transition:.4s}.input-text:focus~.focus-border i:after,.input-text:focus~.focus-border i:before{top:0;height:100%;-webkit-transition:.6s;-o-transition:.6s;transition:.6s}#file{position:absolute}#container,#file{width:100%;height:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.animate-bottom{-webkit-animation-name:animateBottom;-webkit-animation-duration:1s;animation-name:animateBottom;animation-duration:1s}@-webkit-keyframes animateBottom{from{bottom:-300px;opacity:0}to{bottom:0;opacity:1}}@keyframes animateBottom{from{bottom:-300px;opacity:0}to{bottom:0;opacity:1}}p{margin:0;padding:0}.report{margin:.5em}#omni-div{margin-top:30px}#click-counter{font-size:12px}.omni{border:2px dashed #000d42;border-radius:10px;padding:25px 80px}#file{cursor:pointer;top:0;left:0;opacity:0;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:0;text-indent:-100px}.omni>span{color:#ccc;font-size:16px}#container .inputs{height:400px;width:90%;margin:0 auto}i{width:100%}.icon-shadow{display:block;width:95px;height:7px;border-radius:100%;background-color:#eee;top:-17px;margin-left:auto;margin-right:auto}#omni-div,.inputs{display:block}</style> <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.2/package/dist/xlsx.mini.min.js" ></script> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+        <style>[type=text],input[type=text]{letter-spacing:1px;color:#333}#container,h2,h3{text-align:center}.animate-bottom,.icon-shadow,.omni,.spec,h2{position:relative}#file-name,#omni-title,[type=text]{color:#333}#omni-title,.omni{display:inline-block}#omni-title,h3,i{margin-bottom:20px}#download-counter,#effort-counter,#omni-title,.report,h2{font-weight:700}body,input{font-family:'Open Sans',sans-serif}h2{font-size:20px}.omni>span,h3{font-weight:400}h3{font-size:14px}input[type=text]{font-size:16px;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}:focus{outline:0}.spec{float:left;width:30%;margin:15px 1%}[type=text]{width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}.file-div,i{color:#999}.input-text{border:1px solid #ccc;padding:7px 14px 9px;-webkit-transition:.4s;-o-transition:.4s;transition:.4s;background:0 0}.input-text~.focus-border:after,.input-text~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;-webkit-transition:.4s;-o-transition:.4s;transition:.4s}.input-text~.focus-border:after{top:auto;bottom:0}.input-text~.focus-border i:after,.input-text~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;-webkit-transition:.6s;-o-transition:.6s;transition:.6s}.input-text~.focus-border i:after{left:auto;right:0}.input-text:focus~.focus-border:after,.input-text:focus~.focus-border:before{left:0;width:100%;-webkit-transition:.4s;-o-transition:.4s;transition:.4s}.input-text:focus~.focus-border i:after,.input-text:focus~.focus-border i:before{top:0;height:100%;-webkit-transition:.6s;-o-transition:.6s;transition:.6s}#file{position:absolute}#container,#file{width:100%;height:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.animate-bottom{-webkit-animation-name:animateBottom;-webkit-animation-duration:1s;animation-name:animateBottom;animation-duration:1s}@-webkit-keyframes animateBottom{from{bottom:-300px;opacity:0}to{bottom:0;opacity:1}}@keyframes animateBottom{from{bottom:-300px;opacity:0}to{bottom:0;opacity:1}}p{margin:0;padding:0}.report{margin:.5em}#omni-div{margin-top:30px}#click-counter{font-size:12px}.omni{border:2px dashed #000d42;border-radius:10px;padding:25px 80px}#file{cursor:pointer;top:0;left:0;opacity:0;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:0;text-indent:-100px}.omni>span{color:#ccc;font-size:16px}#container .inputs{height:400px;width:90%;margin:0 auto}i{width:100%}.icon-shadow{display:block;width:95px;height:7px;border-radius:100%;background-color:#eee;top:-17px;margin-left:auto;margin-right:auto}#omni-div,.inputs{display:block}</style> <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.2/package/dist/xlsx.mini.min.js" ></script> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
     </head>
   <body>
     <!-- prettier-ignore -->
-    <div id="container" class="animate-bottom"> <h1>Gap Report Generator</h1> <h2> <span style="color: red">[ </span>George Antoniou - EMEA SDE team<span style="color: red">]</span> </h2><h3>This app has generated <span id="download-counter"></span> reports and saved more than <span id="effort-counter"></span> minutes of effort! </h3> <div class="inputs"> <div class="input-set" id="input-set1"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name1" name="campaign-name1" placeholder="Campaign Name #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link1" name="portal-link1" placeholder="Portal Link #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids1" name="geno-ids1" placeholder="Geno IDs #1"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set2"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name2" name="campaign-name2" placeholder="Campaign Name #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link2" name="portal-link2" placeholder="Portal Link #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids2" name="geno-ids2" placeholder="Geno IDs #2"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set3"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name3" name="campaign-name3" placeholder="Campaign Name #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link3" name="portal-link3" placeholder="Portal Link #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids3" name="geno-ids3" placeholder="Geno IDs #3"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set4"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name4" name="campaign-name4" placeholder="Campaign Name #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link4" name="portal-link4" placeholder="Portal Link #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids4" name="geno-ids4" placeholder="Geno IDs #4"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set5"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name5" name="campaign-name5" placeholder="Campaign Name #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link5" name="portal-link5" placeholder="Portal Link #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids5" name="geno-ids5" placeholder="Geno IDs #5"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set6"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name6" name="campaign-name6" placeholder="Campaign Name #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link6" name="portal-link6" placeholder="Portal Link #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids6" name="geno-ids6" placeholder="Geno IDs #6"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set7"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name7" name="campaign-name7" placeholder="Campaign Name #7"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link7" name="portal-link7" placeholder="Portal Link #7"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids7" name="geno-ids7" placeholder="Geno IDs #7"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set8"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name8" name="campaign-name8" placeholder="Campaign Name #8"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link8" name="portal-link8" placeholder="Portal Link #8"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids8" name="geno-ids8" placeholder="Geno IDs #8"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set9"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name9" name="campaign-name9" placeholder="Campaign Name #9"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link9" name="portal-link9" placeholder="Portal Link #9"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids9" name="geno-ids9" placeholder="Geno IDs #9"/> <span class="focus-border"> <i></i> </span> </div></div></div><div class="file-div"> <div id="omni-div"> <label class="report omni" for="file" ><span id="omni-title">Omniture report</span ><i class="fas fa-file-upload fa-7x"></i ><span class="icon-shadow"></span ><span >Click to browse <span class="drag">or drop file here</span></span > <input name="file" id="file" class="file" type="file" accept=".xl*,.csv" onchange="readFile(this.files);"/> </label> </div><p class="file-name" id="file-name">No file selected!</p></div></div>
+    <div id="container" class="animate-bottom"> <h1>Gap Report Generator</h1> <h2> <span style="color: red">[ </span>George Antoniou - EMEA SDE team<span style="color: red">]</span> </h2><h3>This app has generated <span id="download-counter"></span> reports and saved more than <span id="effort-counter"></span> minutes of effort! </h3> <div class="inputs"> <div class="input-set" id="input-set1"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name1" name="campaign-name1" placeholder="Campaign Name #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link1" name="portal-link1" placeholder="Portal Link #1"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids1" name="geno-ids1" placeholder="Geno IDs #1"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set2"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name2" name="campaign-name2" placeholder="Campaign Name #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link2" name="portal-link2" placeholder="Portal Link #2"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids2" name="geno-ids2" placeholder="Geno IDs #2"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set3"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name3" name="campaign-name3" placeholder="Campaign Name #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link3" name="portal-link3" placeholder="Portal Link #3"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids3" name="geno-ids3" placeholder="Geno IDs #3"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set4"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name4" name="campaign-name4" placeholder="Campaign Name #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link4" name="portal-link4" placeholder="Portal Link #4"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids4" name="geno-ids4" placeholder="Geno IDs #4"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set5"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name5" name="campaign-name5" placeholder="Campaign Name #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link5" name="portal-link5" placeholder="Portal Link #5"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids5" name="geno-ids5" placeholder="Geno IDs #5"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set6"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name6" name="campaign-name6" placeholder="Campaign Name #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link6" name="portal-link6" placeholder="Portal Link #6"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids6" name="geno-ids6" placeholder="Geno IDs #6"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set7"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name7" name="campaign-name7" placeholder="Campaign Name #7"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link7" name="portal-link7" placeholder="Portal Link #7"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids7" name="geno-ids7" placeholder="Geno IDs #7"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set8"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name8" name="campaign-name8" placeholder="Campaign Name #8"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link8" name="portal-link8" placeholder="Portal Link #8"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids8" name="geno-ids8" placeholder="Geno IDs #8"/> <span class="focus-border"> <i></i> </span> </div></div><div class="input-set" id="input-set9"> <div class="spec input-div"> <input class="input-text" type="text" id="campaign-name9" name="campaign-name9" placeholder="Campaign Name #9"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="portal-link9" name="portal-link9" placeholder="Portal Link #9"/> <span class="focus-border"> <i></i> </span> </div><div class="spec input-div"> <input class="input-text" type="text" id="geno-ids9" name="geno-ids9" placeholder="Geno IDs #9"/> <span class="focus-border"> <i></i> </span> </div></div></div><div class="file-div"> <div id="omni-div"> <label class="report omni" for="file" ><span id="omni-title">Omniture report</span ><i class="fas fa-file-upload fa-7x"></i ><span class="icon-shadow"></span ><span >Click to browse <span class="drag">or drop file here</span></span > <input name="file" id="file" class="file" type="file" accept=".csv" onchange="readFile(this.files);"/> </label> </div><p class="file-name" id="file-name">No file selected!</p></div></div>
     <script>
       const file = document.getElementById("file"),
         finalResults = [],
@@ -55,9 +55,13 @@
             })
           );
         };
-
         setTimeout(() => {
-          downloadXL(generateFileName());
+          try {
+            downloadXL(generateFileName());
+          } catch (error) {
+            alert(error.message);
+            location.reload();
+          }
         }, 1000);
 
         reader.readAsBinaryString(file[0]);
@@ -264,52 +268,56 @@
       }
 
       function downloadXL(fileName) {
-        fileName = fileName || "GapFinalReport.xlsx";
-        const ws1 = XLSX.utils.json_to_sheet(finalResults),
-          ws2 = XLSX.utils.json_to_sheet(rawData),
-          wb = XLSX.utils.book_new();
+        if (inputs.length === 0) {
+          throw new Error("Missing campaign data!");
+        } else {
+          fileName = fileName || "GapFinalReport.xlsx";
+          const ws1 = XLSX.utils.json_to_sheet(finalResults),
+            ws2 = XLSX.utils.json_to_sheet(rawData),
+            wb = XLSX.utils.book_new();
 
-        XLSX.utils.book_append_sheet(wb, ws1, "Results");
-        XLSX.utils.book_append_sheet(wb, ws2, "Raw Data");
-        const merge = [];
-        const fillArray = [9, 9, 9, 9, 9];
-        const cArray = [0, 9, 11, 13, 14];
+          XLSX.utils.book_append_sheet(wb, ws1, "Results");
+          XLSX.utils.book_append_sheet(wb, ws2, "Raw Data");
+          const merge = [];
+          const fillArray = [9, 9, 9, 9, 9];
+          const cArray = [0, 9, 11, 13, 14];
 
-        for (let i = 0; i < fillArray.length; i++) {
-          const c = cArray[i];
-          for (let j = 0; j < fillArray[i]; j++) {
-            merge.push({
-              s: { r: 1 + 3 * j, c: c },
-              e: { r: 3 + 3 * j, c: c },
-            });
+          for (let i = 0; i < fillArray.length; i++) {
+            const c = cArray[i];
+            for (let j = 0; j < fillArray[i]; j++) {
+              merge.push({
+                s: { r: 1 + 3 * j, c: c },
+                e: { r: 3 + 3 * j, c: c },
+              });
+            }
           }
+
+          ws1["!merges"] = merge;
+
+          for (let i = 1; i < inputs.length; i += 3) {
+            ws1["A" + (i + 1)].l = {
+              Target: inputs[i],
+            };
+          }
+
+          const date = new Date();
+          const currentDate = date.toLocaleString("default", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
+
+          XLSX.utils.sheet_add_aoa(ws1, [["Results Pulled: " + currentDate]], {
+            origin: "A30",
+          });
+
+          XLSX.writeFile(wb, fileName);
+
+          countClicks("hit");
+          alert("Report created successfully!");
+
+          location.reload();
         }
-
-        ws1["!merges"] = merge;
-
-        for (let i = 1; i < inputs.length; i += 3) {
-          ws1["A" + (i + 1)].l = {
-            Target: inputs[i],
-          };
-        }
-
-        const date = new Date();
-        const currentDate = date.toLocaleString("default", {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-        });
-
-        XLSX.utils.sheet_add_aoa(ws1, [["Results Pulled: " + currentDate]], {
-          origin: "A30",
-        });
-
-        XLSX.writeFile(wb, fileName);
-
-        countClicks("hit");
-        alert("Report created successfully!");
-
-        location.reload();
       }
     </script>
   </body>
