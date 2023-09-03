@@ -12,7 +12,9 @@
     </head>
   <body>
     <!-- prettier-ignore -->
-    <div id="container" class="animate-bottom"> <h1>Gap Report Generator</h1> <h2> <span style="color: red">[ </span>George Antoniou - EMEA SDE team<span style="color: red">]</span> </h2><h3>This app has generated <span id="download-counter"></span> reports and saved more than <span id="effort-counter"></span> hours of effort! </h3> <div class="inputs"> <div class="campaign-select"> <a class="campaign-type bulk" href="./gaprepgen.html">Bulk</a> <a class="campaign-type triggered" href="./gaprepgentrig.html" >Triggered</a > </div></div><div class="file-div"> <div id="omni-div"> <label class="report omni" for="file" ><span id="omni-title">Omniture report</span ><i class="fas fa-file-upload fa-7x"></i ><span class="icon-shadow"></span ><span >Click to browse <span class="drag">or drop file here</span></span > <input name="file" id="file" class="file" type="file" accept=".csv" onchange="readFile(this.files);"/> </label> </div><p class="file-name" id="file-name">No file selected!</p></div></div>
+    <div id="container" class="animate-bottom"> <h1>Gap Report Generator</h1> <h2> <span style="color: red">[ </span>George Antoniou - EMEA SDE team<span style="color: red">]</span> </h2>
+      <!-- <h3>This app has generated <span id="download-counter"></span> reports and saved more than <span id="effort-counter"></span> hours of effort! </h3>  -->
+      <div class="inputs"> <div class="campaign-select"> <a class="campaign-type bulk" href="./gaprepgen.html">Bulk</a> <a class="campaign-type triggered" href="./gaprepgentrig.html" >Triggered</a > </div></div><div class="file-div"> <div id="omni-div"> <label class="report omni" for="file" ><span id="omni-title">Omniture report</span ><i class="fas fa-file-upload fa-7x"></i ><span class="icon-shadow"></span ><span >Click to browse <span class="drag">or drop file here</span></span > <input name="file" id="file" class="file" type="file" accept=".csv" onchange="readFile(this.files);"/> </label> </div><p class="file-name" id="file-name">No file selected!</p></div></div>
     <script>
       function createInputDiv() {
         const fragment = document.createDocumentFragment();
@@ -144,25 +146,25 @@
         reader.readAsBinaryString(file[0]);
       }
 
-      function countClicks(endpoint) {
-        const xhr = new XMLHttpRequest();
-        xhr.open(
-          'GET',
-          `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgen`
-        );
-        xhr.responseType = 'json';
-        xhr.onload = function () {
-          if (endpoint === 'info') {
-            document.getElementById('download-counter').textContent =
-              this.response.value;
-            document.getElementById('effort-counter').textContent =
-              roundToHours(this.response.value * 34);
-          }
-        };
-        xhr.send();
-      }
+      // function countClicks(endpoint) {
+      //   const xhr = new XMLHttpRequest();
+      //   xhr.open(
+      //     'GET',
+      //     `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgen`
+      //   );
+      //   xhr.responseType = 'json';
+      //   xhr.onload = function () {
+      //     if (endpoint === 'info') {
+      //       document.getElementById('download-counter').textContent =
+      //         this.response.value;
+      //       document.getElementById('effort-counter').textContent =
+      //         roundToHours(this.response.value * 34);
+      //     }
+      //   };
+      //   xhr.send();
+      // }
 
-      countClicks('info');
+      // countClicks('info');
 
       function addCommas(num) {
         return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
@@ -290,13 +292,17 @@
               .filter(Number),
           });
           const input = inputObj[z];
-          if (
-            input['Geno Ids'][2] > input['Geno Ids'][0] &&
-            input['Geno Ids'][2] > input['Geno Ids'][1]
-          ) {
-            const ctrl = input['Geno Ids'][2];
-            input['Geno Ids'].splice(2, 1);
-            input['Geno Ids'].unshift(ctrl);
+          if (input['Geno Ids'] && input['Geno Ids'].length > 1) {
+            let maxIndex = 0;
+            for (let i = 1; i < input['Geno Ids'].length; i++) {
+              if (input['Geno Ids'][i] > input['Geno Ids'][maxIndex]) {
+                maxIndex = i;
+              }
+            }
+
+            const maxVal = input['Geno Ids'][maxIndex];
+            input['Geno Ids'].splice(maxIndex, 1);
+            input['Geno Ids'].unshift(maxVal);
           }
 
           updateNetDemand(data);
@@ -394,7 +400,7 @@
 
           XLSX.writeFile(wb, fileName);
 
-          countClicks('hit');
+          //countClicks('hit');
           alert('Report created successfully!');
 
           location.reload();
