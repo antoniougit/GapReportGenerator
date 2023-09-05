@@ -274,13 +274,7 @@
         const data = rawData,
           inputObj = [],
           results = [],
-          metrics = [
-            'Delivered (event13)',
-            'Opened (event14)',
-            'Clicked (event15)',
-            'Orders',
-            'Net Demand',
-          ],
+          metrics = ['Delivered', 'Opened', 'Clicked', 'Orders', 'Net Demand'],
           variants = ['C', 'T1', 'T2'];
 
         for (let z = 0; z < inputs.length / 3; z++) {
@@ -312,17 +306,22 @@
           const result = results[z];
 
           for (let i = 0; i < variants.length; i++) {
+            const genoId = input['Geno Ids'][i];
+            const validEmails = ['PERSXC1X', 'PERSXT1X', 'PERSXT2X'];
+
             data.forEach((d) => {
+              const emailVersion = d['Email version (v11) (evar11)'];
               for (let k = 0; k < metrics.length; k++) {
                 if (
-                  d['Email version (v11) (evar11)'].includes(
-                    input['Geno Ids'][i]
-                  ) &&
-                  (d['Email version (v11) (evar11)'].includes('PERSXC1X') ||
-                    d['Email version (v11) (evar11)'].includes('PERSXT1X') ||
-                    d['Email version (v11) (evar11)'].includes('PERSXT2X'))
+                  emailVersion.includes(genoId) &&
+                  validEmails.some((email) => emailVersion.includes(email))
                 ) {
-                  result[i][k] += d[metrics[k]];
+                  for (let key in d) {
+                    if (key.startsWith(metrics[k])) {
+                      result[i][k] += d[key];
+                      break;
+                    }
+                  }
                 }
                 result[i][k] = parseFloat(result[i][k].toFixed(2));
               }
