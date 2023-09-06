@@ -1,8 +1,10 @@
-# Gap reporting v1.0.0
+# Gap reporting v1.1.1
 
 First revision: 01/02/2023
 
 ## Revisions
+
+v1.1.1: Also works with Sigma reports.
 
 v1.1: It now works for column names that begin with "Delivered", "Opened", "Clicked" instead of exact match, because the client is constantly changing the column names.
 
