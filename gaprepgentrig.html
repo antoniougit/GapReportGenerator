@@ -1,0 +1,271 @@
+<!-- 
+// ==UserScript==
+// @name         Gap Triggered Report Generator
+// @namespace    Persado EMEA SDE team
+// @version      v0.7
+// @first_ver    20/02/2023
+// @description  Generate triggered Gap reports from Excel files
+// @author       george.antoniou@persado.com
+// ==/UserScript== 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <!-- prettier-ignore -->
+  <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex,nofollow" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <title>Gap Report Generator</title>
+        <style>[type=text],input[type=text]{letter-spacing:1px;color:#333}#container,h2,h3{text-align:center}.animate-bottom,.icon-shadow,.omni,.spec,h2{position:relative}.file-name,#omni-title,[type=text]{color:#333;user-select:text}#omni-title,.omni{display:inline-block}#omni-title,h3,i{margin-bottom:20px}#download-counter,#effort-counter,#omni-title,.report,h2{font-weight:700}body,input,textarea{font-family:'Open Sans',sans-serif}h2{font-size:20px}.omni>span,h3{font-weight:400}h3{font-size:14px}input[type=text],textarea{font-size:16px;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}:focus{outline:0}.spec{width:30%;margin:15px 1%}[type=text]{width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}.file-div,i{color:#999}.input-ev{border:1px solid #ccc;padding:7px 14px 9px;-webkit-transition:.4s;-o-transition:.4s;transition:.4s;background:0 0}.input-ev~.focus-border:after,.input-ev~.focus-border:before{content:'';position:absolute;top:0;left:50%;width:0;height:2px;background-color:#000d42;-webkit-transition:.4s;-o-transition:.4s;transition:.4s}.input-ev~.focus-border:after{top:auto;bottom:0}.input-ev~.focus-border i:after,.input-ev~.focus-border i:before{content:'';position:absolute;top:50%;left:0;width:2px;height:0;background-color:#000d42;-webkit-transition:.6s;-o-transition:.6s;transition:.6s}.input-ev~.focus-border i:after{left:auto;right:0}.input-ev:focus~.focus-border:after,.input-ev:focus~.focus-border:before{left:0;width:100%;-webkit-transition:.4s;-o-transition:.4s;transition:.4s}.input-ev:focus~.focus-border i:after,.input-ev:focus~.focus-border i:before{top:0;height:100%;-webkit-transition:.6s;-o-transition:.6s;transition:.6s}#file{position:absolute}#container,#file{width:100%;height:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes spin{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.animate-bottom{-webkit-animation-name:animateBottom;-webkit-animation-duration:1s;animation-name:animateBottom;animation-duration:1s}@-webkit-keyframes animateBottom{from{bottom:-300px;opacity:0}to{bottom:0;opacity:1}}@keyframes animateBottom{from{bottom:-300px;opacity:0}to{bottom:0;opacity:1}}p{margin:0;padding:0}.report{margin:.5em}#omni-div{margin-top:30px}#click-counter{font-size:12px}.omni{border:2px dashed #000d42;border-radius:10px;padding:10px 40px}#file{cursor:pointer;top:0;left:0;opacity:0;display:block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;font-size:0;text-indent:-100px}.omni>span{color:#ccc;font-size:16px}#container .inputs{width:90%;margin:0 auto}i{width:100%}.icon-shadow{display:block;width:95px;height:7px;border-radius:100%;background-color:#eee;top:-17px;margin-left:auto;margin-right:auto}#omni-div,.inputs{display:block}.title-div{width:60%;margin:15px 20%;}.input-report{min-height:150px;width:100%;text-align:center;white-space:pre;overflow-wrap:normal}.campaign-type{width:130px;padding:14px;margin-bottom:20px;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-style:solid;border-width:2px;-webkit-box-sizing:border-box;box-sizing:border-box;color:#212121;cursor:pointer;display:inline-block;text-align:center;text-decoration:none;-webkit-transform:translateZ(0) scale(1);transform:translateZ(0) scale(1);-webkit-transition:-webkit-transform .2s;transition:transform .2s;-o-transition:transform .2s;transition:transform .2s,-webkit-transform .2s;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-select:none;-ms-touch-action:manipulation;touch-action:manipulation}.campaign-type:not(:disabled):hover{background:#f18989;-webkit-transform:scale(1.05);-ms-transform:scale(1.05);transform:scale(1.05)}.campaign-type:not(:disabled):hover:active{-webkit-transform:scale(1.05) translateY(.125rem);-ms-transform:scale(1.05) translateY(.125rem);transform:scale(1.05) translateY(.125rem)}.campaign-type:focus,.campaign-type:focus:not(:focus-visible){outline:transparent solid 0}.campaign-type:focus:before{content:"";left:calc(-1*.375rem);pointer-events:none;position:absolute;top:calc(-1*.375rem);-webkit-transition:border-radius;-o-transition:border-radius;transition:border-radius;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.campaign-type:focus:not(:focus-visible):before{border-width:0}.campaign-type:not(:disabled):active{-webkit-transform:translateY(.125rem);-ms-transform:translateY(.125rem);transform:translateY(.125rem)}.triggered{background:#f18989}textarea::-webkit-input-placeholder{-webkit-transform:translateY(60px);transform:translateY(60px)}textarea::-moz-placeholder{transform:translateY(60px)}textarea:-ms-input-placeholder{-ms-transform:translateY(60px);transform:translateY(60px)}textarea::-ms-input-placeholder{-ms-transform:translateY(60px);transform:translateY(60px)}textarea::placeholder{-webkit-transform:translateY(60px);-ms-transform:translateY(60px);transform:translateY(60px)}.row{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}</style> <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.2/package/dist/xlsx.mini.min.js" ></script> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/> <link rel="preconnect" href="https://fonts.googleapis.com"/> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/> <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+    </head>
+  <body>
+    <!-- prettier-ignore -->
+    <div id="container" class="animate-bottom"> <h1>Gap Report Generator</h1> <h2> <span style="color: red">[ </span>George Antoniou - EMEA SDE team<span style="color: red" >]</span > </h2>
+       <!-- <h3> This app has generated <span id="download-counter"></span> reports and saved more than <span id="effort-counter"></span> hours of effort! </h3>  -->
+       <div class="inputs"> <div class="campaign-select"> <a class="campaign-type bulk" href="./gaprepgen.html">Bulk</a> <a class="campaign-type triggered" href="./gaprepgentrig.html" >Triggered</a > </div><div class="spec input-div title-div"> <textarea class="input-report" type="text" id="title" name="title" placeholder="Copy/paste Report Header here" width="500" ></textarea> </div></div><div class="file-div"> <div id="omni-div"> <label class="report omni" for="file" ><span id="omni-title">Excel reports</span ><i class="fas fa-file-upload fa-7x"></i ><span class="icon-shadow"></span ><span >Click to browse <span class="drag">or drop files here</span></span > <input name="file" id="file" class="file" type="file" multiple accept=".csv,.xls*" onchange="readFile(this.files);"/> </label> </div><p class="file-name">No files selected!</p></div></div>
+    <script>
+      function createInputDiv(index) {
+        const fragment = document.createDocumentFragment();
+
+        const input = document.createElement('input');
+        input.classList.add('input-ev');
+        input.type = 'text';
+        input.id = `ev${index}`;
+        input.name = `ev${index}`;
+        input.placeholder = index === 0 ? 'Control EV' : `V${index} EV`;
+
+        const div = document.createElement('div');
+        div.classList.add('spec', 'input-div');
+        div.appendChild(input);
+
+        const span = document.createElement('span');
+        span.classList.add('focus-border');
+
+        const i = document.createElement('i');
+        span.appendChild(i);
+
+        div.appendChild(span);
+
+        fragment.appendChild(div);
+
+        return fragment;
+      }
+
+      const inputsDiv = document.querySelector('.inputs');
+
+      for (let i = 0; i < 17; i++) {
+        const inputDiv = createInputDiv(i);
+
+        if (i % 3 === 0) {
+          const rowDiv = document.createElement('div');
+          rowDiv.classList.add('row');
+          inputsDiv.appendChild(rowDiv);
+        }
+
+        const rowDiv = inputsDiv.lastElementChild;
+        rowDiv.appendChild(inputDiv);
+      }
+
+      function readFile(files) {
+        try {
+          validateInputs();
+        } catch (error) {
+          alert(error.message);
+          location.reload();
+        }
+
+        const fileNameDiv = document.querySelector('.file-name'),
+          fileDiv = document.querySelector('.file-div'),
+          filePromises = [];
+
+        for (const file of files) {
+          const fileName = file.name,
+            size = file.size,
+            fileSize = (size / 1000).toFixed(2),
+            fileNameAndSize = `${fileName} - ${addCommas(fileSize)} KB`;
+
+          const reader = new FileReader();
+
+          const filePromise = new Promise((resolve, reject) => {
+            reader.onload = (event) => {
+              try {
+                const fileData = event.target.result,
+                  wb = XLSX.read(fileData, { type: 'binary' }),
+                  xlRowObj = XLSX.utils.sheet_to_row_object_array(
+                    wb.Sheets[wb.SheetNames[0]],
+                    { range: 11 }
+                  );
+                const rawData = xlRowObj.map((a) => ({ ...a }));
+                resolve(rawData);
+              } catch (error) {
+                reject(error);
+              }
+            };
+
+            reader.readAsBinaryString(file);
+          });
+
+          filePromises.push(filePromise);
+
+          if (fileNameDiv.textContent === 'No files selected!') {
+            fileNameDiv.textContent = fileNameAndSize;
+          } else {
+            const p = document.createElement('p');
+            p.className = 'file-name';
+            p.textContent = fileNameAndSize;
+            fileDiv.appendChild(p);
+          }
+        }
+
+        Promise.all(filePromises)
+          .then((rawDataArrays) => {
+            const flattenedRawData = rawDataArrays.flat();
+            createReport(flattenedRawData);
+            downloadXL();
+          })
+          .catch((error) => {
+            alert(error.message);
+            location.reload();
+          });
+      }
+
+      // async function countClicks(endpoint) {
+      //   const response = await fetch(
+      //     `https://api.countapi.xyz/${endpoint}/gantoniou/gaprepgentrig`
+      //   );
+      //   const data = await response.json();
+
+      //   if (endpoint === 'info') {
+      //     document.getElementById('download-counter').textContent = data.value;
+      //     document.getElementById('effort-counter').textContent = roundToHours(
+      //       data.value * 8
+      //     );
+      //   }
+      // }
+
+      // countClicks('info');
+
+      function addCommas(num) {
+        if (typeof num !== 'number') {
+          return num;
+        }
+        return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+      }
+
+      function roundToHours(mins) {
+        return Math.floor(mins / 60);
+      }
+
+      function transposeArray(array) {
+        const [row] = array;
+        return row.map((value, column) => array.map((row) => row[column]));
+      }
+
+      const inputs = [];
+      let reportHeader = [];
+
+      function validateInputs() {
+        const inputsEV = document.querySelectorAll('.input-ev'),
+          header = document.querySelector('.input-report').value.trim();
+
+        if (header === '') {
+          throw new Error('Please fill in the Report Header!');
+        }
+
+        const headerArr = header.split(/\r?\n|\r|\n/g);
+        reportHeader.push(headerArr);
+        reportHeader = transposeArray(reportHeader);
+
+        for (const input of inputsEV) {
+          const trimmedInput = input.value.trim();
+          if (trimmedInput.length) {
+            const inputArr = trimmedInput.split(/[ ,.]+/).filter(Boolean);
+            inputs.push(inputArr);
+          }
+        }
+      }
+
+      const finalResults = [];
+      let rawDataCombined = [];
+
+      function createReport(data) {
+        const emptyProp = '__EMPTY';
+        const deliveredProp = 'Delivered';
+        const openedProp = 'Opened';
+        const clickedProp = 'Clicked';
+        const visitsProp = 'Visits';
+        const ordersProp = 'Orders';
+        const revenueProp = 'Revenue (Gross Merchandise)';
+        const netDemandProp = 'Net Demand [Approved]';
+
+        for (const [i, input] of inputs.entries()) {
+          if (!finalResults[i]) {
+            finalResults[i] = {
+              ' ': '',
+              [deliveredProp]: 0,
+              [openedProp]: 0,
+              [clickedProp]: 0,
+              [visitsProp]: 0,
+              [ordersProp]: 0,
+              [revenueProp]: 0,
+              [netDemandProp]: 0,
+            };
+          }
+
+          for (const d of data) {
+            for (let n = 0; n < input.length; n++) {
+              if (
+                d[emptyProp] &&
+                (d[emptyProp].includes(input[n]) ||
+                  d[emptyProp].includes(input[n] + '\\'))
+              ) {
+                rawDataCombined = rawDataCombined.concat(d);
+                finalResults[i][' '] = i === 0 ? 'Control' : `V${i}`;
+                finalResults[i][deliveredProp] += +d[deliveredProp] || 0;
+                finalResults[i][openedProp] += +d[openedProp] || 0;
+                finalResults[i][clickedProp] += +d[clickedProp] || 0;
+                finalResults[i][visitsProp] += +d[visitsProp] || 0;
+                finalResults[i][ordersProp] += +d[ordersProp] || 0;
+                finalResults[i][revenueProp] += +d[revenueProp] || 0;
+                finalResults[i][netDemandProp] += +d[netDemandProp] || 0;
+              }
+            }
+          }
+        }
+      }
+
+      function downloadXL(
+        fileName = `GapTriggeredFinalReport_${new Date()
+          .toJSON()
+          .slice(0, 10)
+          .replace(/-/g, '')}.xlsx`
+      ) {
+        if (inputs.length === 0) {
+          throw new Error('Missing campaign data!');
+        } else {
+          const ws1 = XLSX.utils.json_to_sheet(finalResults, { origin: 'A8' }),
+            ws2 = XLSX.utils.json_to_sheet(rawDataCombined),
+            wb = XLSX.utils.book_new();
+
+          XLSX.utils.book_append_sheet(wb, ws1, 'Results');
+          XLSX.utils.book_append_sheet(wb, ws2, 'Raw Data');
+
+          for (let i = 0; i < reportHeader.length; i++) {
+            XLSX.utils.sheet_add_aoa(ws1, [reportHeader[i]], {
+              origin: `A${i + 1}`,
+            });
+          }
+
+          XLSX.writeFile(wb, fileName);
+
+         // countClicks('hit');
+          alert('Report created successfully!');
+          location.reload();
+        }
+      }
+    </script>
+  </body>
+</html>
